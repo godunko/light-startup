@@ -10,8 +10,6 @@ pragma Ada_2022;
 with Interfaces;
 with System.Storage_Elements;
 
-with System_SAM3X8E.Board;
-
 package body System_SAM3X8E is
 
    procedure Reset_Handler
