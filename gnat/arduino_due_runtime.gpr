@@ -1,0 +1,36 @@
+--
+--  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+library project Arduino_Due_Runtime is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "light-cortex-m3";
+
+   for Library_Name use "arduinodue";
+   for Library_Dir use "../.libs";
+
+   for Object_Dir use "../.objs";
+   for Source_Dirs use
+     ("../source/board/arduino_due",
+      "../source/mcu/sam3x8e",
+      "../source/cpu/cm3");
+
+   Linker_Switches :=
+     (
+        "-Wl,--undefined=__light_exceptions_vector",
+        "-Wl,--undefined=__light_interrupts_vector",
+        "-T", Project'Project_Dir & "../source/ld/sam3x8e-flash.ld"
+     );
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g",
+         "-O2",
+         "-ffunction-sections",
+         "-fdata-sections");
+   end Compiler;
+
+end Arduino_Due_Runtime;
