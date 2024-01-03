@@ -10,14 +10,14 @@ pragma Restrictions (No_Elaboration_Code);
 
 private with System;
 
-with System_CM3;
+with System_ARMv7;
 
 package System_SAM3X8E is
 
    pragma Elaborate_Body;
 
    subtype SAM3X8E_Interrupt_Event_Identifier is
-     System_CM3.Interrupt_Event_Identifier range 0 .. 44;
+     System_ARMv7.Interrupt_Event_Identifier range 0 .. 44;
 
 private
 

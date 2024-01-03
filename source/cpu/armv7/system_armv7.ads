@@ -10,7 +10,7 @@ pragma Restrictions (No_Elaboration_Code);
 
 private with System;
 
-package System_CM3 is
+package System_ARMv7 is
 
    type Exception_Event_Identifier is range -16 .. -1;
 
@@ -98,4 +98,4 @@ private
            Linker_Section => ".vectors",
            External_Name  => "__light_exceptions_vector";
 
-end System_CM3;
+end System_ARMv7;

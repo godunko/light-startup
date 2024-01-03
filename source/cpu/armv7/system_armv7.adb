@@ -6,7 +6,7 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-package body System_CM3 is
+package body System_ARMv7 is
 
    -----------------------------
    -- Dummy_Exception_Handler --
@@ -19,4 +19,4 @@ package body System_CM3 is
       end loop;
    end Dummy_Exception_Handler;
 
-end System_CM3;
+end System_ARMv7;

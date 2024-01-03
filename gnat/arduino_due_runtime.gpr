@@ -16,7 +16,7 @@ library project Arduino_Due_Runtime is
    for Source_Dirs use
      ("../source/board/arduino_due",
       "../source/mcu/sam3x8e",
-      "../source/cpu/cm3");
+      "../source/cpu/armv7");
 
    Linker_Switches :=
      (

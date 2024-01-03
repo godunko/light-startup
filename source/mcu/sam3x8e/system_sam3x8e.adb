@@ -70,7 +70,7 @@ package body System_SAM3X8E is
    -----------------------------
 
    procedure Dummy_Interrupt_Handler
-     renames System_CM3.Dummy_Exception_Handler;
+     renames System_ARMv7.Dummy_Exception_Handler;
 
    ----------------------
    -- Fill_BSS_Section --
