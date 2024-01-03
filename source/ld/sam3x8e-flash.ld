@@ -31,8 +31,8 @@ SECTIONS
        sections */
     .vectors :
     {
-        KEEP(*(.vectors))
-        KEEP(*(.vectors.*))
+        KEEP(*(.vectors.exceptions.*))
+        KEEP(*(.vectors.interrupts.*))
     } > rom
 
     .text :
