@@ -39,7 +39,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  System Clock Enable Register
-   type PMC_SCER_Register is record
+   type PMC_SCER_Register_Value is record
       --  unspecified
       Reserved_0_4   : ATSAM3X8E.UInt5 := 16#0#;
       --  Write-only. Enable USB OTG Clock (48 MHz, USB_48M) for UTMI
@@ -52,16 +52,18 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_11_31 : ATSAM3X8E.UInt21 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_SCER_Register use record
+   for PMC_SCER_Register_Value use record
       Reserved_0_4   at 0 range 0 .. 4;
       UOTGCLK        at 0 range 5 .. 5;
       Reserved_6_7   at 0 range 6 .. 7;
       PCK            at 0 range 8 .. 10;
       Reserved_11_31 at 0 range 11 .. 31;
    end record;
+
+   type PMC_SCER_Register is new PMC_SCER_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_SCDR_PCK array
    type PMC_SCDR_PCK_Field_Array is array (0 .. 2) of Boolean
@@ -88,7 +90,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  System Clock Disable Register
-   type PMC_SCDR_Register is record
+   type PMC_SCDR_Register_Value is record
       --  unspecified
       Reserved_0_4   : ATSAM3X8E.UInt5 := 16#0#;
       --  Write-only. Disable USB OTG Clock (48 MHz, USB_48M) for UTMI
@@ -101,16 +103,18 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_11_31 : ATSAM3X8E.UInt21 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_SCDR_Register use record
+   for PMC_SCDR_Register_Value use record
       Reserved_0_4   at 0 range 0 .. 4;
       UOTGCLK        at 0 range 5 .. 5;
       Reserved_6_7   at 0 range 6 .. 7;
       PCK            at 0 range 8 .. 10;
       Reserved_11_31 at 0 range 11 .. 31;
    end record;
+
+   type PMC_SCDR_Register is new PMC_SCDR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_SCSR_PCK array
    type PMC_SCSR_PCK_Field_Array is array (0 .. 2) of Boolean
@@ -137,7 +141,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  System Clock Status Register
-   type PMC_SCSR_Register is record
+   type PMC_SCSR_Register_Value is record
       --  unspecified
       Reserved_0_4   : ATSAM3X8E.UInt5;
       --  Read-only. USB OTG Clock (48 MHz, USB_48M) Clock Status
@@ -149,16 +153,18 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_11_31 : ATSAM3X8E.UInt21;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_SCSR_Register use record
+   for PMC_SCSR_Register_Value use record
       Reserved_0_4   at 0 range 0 .. 4;
       UOTGCLK        at 0 range 5 .. 5;
       Reserved_6_7   at 0 range 6 .. 7;
       PCK            at 0 range 8 .. 10;
       Reserved_11_31 at 0 range 11 .. 31;
    end record;
+
+   type PMC_SCSR_Register is new PMC_SCSR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCER0_PID array
    type PMC_PCER0_PID_Field_Array is array (8 .. 31) of Boolean
@@ -185,19 +191,21 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Enable Register 0
-   type PMC_PCER0_Register is record
+   type PMC_PCER0_Register_Value is record
       --  unspecified
       Reserved_0_7 : ATSAM3X8E.Byte := 16#0#;
       --  Write-only. Peripheral Clock 8 Enable
       PID          : PMC_PCER0_PID_Field := (As_Array => False, Val => 16#0#);
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCER0_Register use record
+   for PMC_PCER0_Register_Value use record
       Reserved_0_7 at 0 range 0 .. 7;
       PID          at 0 range 8 .. 31;
    end record;
+
+   type PMC_PCER0_Register is new PMC_PCER0_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCDR0_PID array
    type PMC_PCDR0_PID_Field_Array is array (8 .. 31) of Boolean
@@ -224,19 +232,21 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Disable Register 0
-   type PMC_PCDR0_Register is record
+   type PMC_PCDR0_Register_Value is record
       --  unspecified
       Reserved_0_7 : ATSAM3X8E.Byte := 16#0#;
       --  Write-only. Peripheral Clock 8 Disable
       PID          : PMC_PCDR0_PID_Field := (As_Array => False, Val => 16#0#);
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCDR0_Register use record
+   for PMC_PCDR0_Register_Value use record
       Reserved_0_7 at 0 range 0 .. 7;
       PID          at 0 range 8 .. 31;
    end record;
+
+   type PMC_PCDR0_Register is new PMC_PCDR0_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCSR0_PID array
    type PMC_PCSR0_PID_Field_Array is array (8 .. 31) of Boolean
@@ -263,24 +273,26 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Status Register 0
-   type PMC_PCSR0_Register is record
+   type PMC_PCSR0_Register_Value is record
       --  unspecified
       Reserved_0_7 : ATSAM3X8E.Byte;
       --  Read-only. Peripheral Clock 8 Status
       PID          : PMC_PCSR0_PID_Field;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCSR0_Register use record
+   for PMC_PCSR0_Register_Value use record
       Reserved_0_7 at 0 range 0 .. 7;
       PID          at 0 range 8 .. 31;
    end record;
 
+   type PMC_PCSR0_Register is new PMC_PCSR0_Register_Value
+     with Volatile_Full_Access;
+
    subtype CKGR_UCKR_UPLLCOUNT_Field is ATSAM3X8E.UInt4;
 
    --  UTMI Clock Register
-   type CKGR_UCKR_Register is record
+   type CKGR_UCKR_Register_Value is record
       --  unspecified
       Reserved_0_15  : ATSAM3X8E.UInt16 := 16#800#;
       --  UTMI PLL Enable
@@ -292,16 +304,18 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_24_31 : ATSAM3X8E.Byte := 16#10#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for CKGR_UCKR_Register use record
+   for CKGR_UCKR_Register_Value use record
       Reserved_0_15  at 0 range 0 .. 15;
       UPLLEN         at 0 range 16 .. 16;
       Reserved_17_19 at 0 range 17 .. 19;
       UPLLCOUNT      at 0 range 20 .. 23;
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
+
+   type CKGR_UCKR_Register is new CKGR_UCKR_Register_Value
+     with Volatile_Full_Access;
 
    --  Main On-Chip RC Oscillator Frequency Selection
    type CKGR_MOR_MOSCRCF_Field is
@@ -356,8 +370,7 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_26_31 : ATSAM3X8E.UInt6 := 16#0#;
    end record
-     with Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
    for CKGR_MOR_Register_Value use record
       MOSCXTEN       at 0 range 0 .. 0;
@@ -379,7 +392,7 @@ package ATSAM3X8E.PMC is
    subtype CKGR_MCFR_MAINF_Field is ATSAM3X8E.UInt16;
 
    --  Main Clock Frequency Register
-   type CKGR_MCFR_Register is record
+   type CKGR_MCFR_Register_Value is record
       --  Read-only. Main Clock Frequency
       MAINF          : CKGR_MCFR_MAINF_Field;
       --  Read-only. Main Clock Ready
@@ -387,21 +400,23 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_17_31 : ATSAM3X8E.UInt15;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for CKGR_MCFR_Register use record
+   for CKGR_MCFR_Register_Value use record
       MAINF          at 0 range 0 .. 15;
       MAINFRDY       at 0 range 16 .. 16;
       Reserved_17_31 at 0 range 17 .. 31;
    end record;
+
+   type CKGR_MCFR_Register is new CKGR_MCFR_Register_Value
+     with Volatile_Full_Access;
 
    subtype CKGR_PLLAR_DIVA_Field is ATSAM3X8E.Byte;
    subtype CKGR_PLLAR_PLLACOUNT_Field is ATSAM3X8E.UInt6;
    subtype CKGR_PLLAR_MULA_Field is ATSAM3X8E.UInt11;
 
    --  PLLA Register
-   type CKGR_PLLAR_Register is record
+   type CKGR_PLLAR_Register_Value is record
       --  Divider
       DIVA           : CKGR_PLLAR_DIVA_Field := 16#0#;
       --  PLLA Counter
@@ -417,10 +432,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_30_31 : ATSAM3X8E.UInt2 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for CKGR_PLLAR_Register use record
+   for CKGR_PLLAR_Register_Value use record
       DIVA           at 0 range 0 .. 7;
       PLLACOUNT      at 0 range 8 .. 13;
       Reserved_14_15 at 0 range 14 .. 15;
@@ -429,6 +443,9 @@ package ATSAM3X8E.PMC is
       ONE            at 0 range 29 .. 29;
       Reserved_30_31 at 0 range 30 .. 31;
    end record;
+
+   type CKGR_PLLAR_Register is new CKGR_PLLAR_Register_Value
+     with Volatile_Full_Access;
 
    --  Master Clock Source Selection
    type PMC_MCKR_CSS_Field is
@@ -492,8 +509,7 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_14_31 : ATSAM3X8E.UInt18 := 16#0#;
    end record
-     with Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
    for PMC_MCKR_Register_Value use record
       CSS            at 0 range 0 .. 1;
@@ -511,7 +527,7 @@ package ATSAM3X8E.PMC is
    subtype PMC_USB_USBDIV_Field is ATSAM3X8E.UInt4;
 
    --  USB Clock Register
-   type PMC_USB_Register is record
+   type PMC_USB_Register_Value is record
       --  USB Input Clock Selection
       USBS           : Boolean := False;
       --  unspecified
@@ -521,15 +537,17 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_12_31 : ATSAM3X8E.UInt20 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_USB_Register use record
+   for PMC_USB_Register_Value use record
       USBS           at 0 range 0 .. 0;
       Reserved_1_7   at 0 range 1 .. 7;
       USBDIV         at 0 range 8 .. 11;
       Reserved_12_31 at 0 range 12 .. 31;
    end record;
+
+   type PMC_USB_Register is new PMC_USB_Register_Value
+     with Volatile_Full_Access;
 
    --  Master Clock Source Selection
    type PMC_PCK_CSS_Field is
@@ -578,7 +596,7 @@ package ATSAM3X8E.PMC is
       CLK_64 => 6);
 
    --  Programmable Clock 0 Register
-   type PMC_PCK_Register is record
+   type PMC_PCK_Register_Value is record
       --  Master Clock Source Selection
       CSS           : PMC_PCK_CSS_Field := ATSAM3X8E.PMC.SLOW_CLK;
       --  unspecified
@@ -588,15 +606,17 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_7_31 : ATSAM3X8E.UInt25 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCK_Register use record
+   for PMC_PCK_Register_Value use record
       CSS           at 0 range 0 .. 2;
       Reserved_3_3  at 0 range 3 .. 3;
       PRES          at 0 range 4 .. 6;
       Reserved_7_31 at 0 range 7 .. 31;
    end record;
+
+   type PMC_PCK_Register is new PMC_PCK_Register_Value
+     with Volatile_Full_Access;
 
    --  Programmable Clock 0 Register
    type PMC_PCK_Registers is array (0 .. 2) of PMC_PCK_Register;
@@ -626,7 +646,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Interrupt Enable Register
-   type PMC_IER_Register is record
+   type PMC_IER_Register_Value is record
       --  Write-only. Main Crystal Oscillator Status Interrupt Enable
       MOSCXTS        : Boolean := False;
       --  Write-only. PLLA Lock Interrupt Enable
@@ -655,10 +675,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_19_31 : ATSAM3X8E.UInt13 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_IER_Register use record
+   for PMC_IER_Register_Value use record
       MOSCXTS        at 0 range 0 .. 0;
       LOCKA          at 0 range 1 .. 1;
       Reserved_2_2   at 0 range 2 .. 2;
@@ -673,6 +692,9 @@ package ATSAM3X8E.PMC is
       CFDEV          at 0 range 18 .. 18;
       Reserved_19_31 at 0 range 19 .. 31;
    end record;
+
+   type PMC_IER_Register is new PMC_IER_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_IDR_PCKRDY array
    type PMC_IDR_PCKRDY_Field_Array is array (0 .. 2) of Boolean
@@ -699,7 +721,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Interrupt Disable Register
-   type PMC_IDR_Register is record
+   type PMC_IDR_Register_Value is record
       --  Write-only. Main Crystal Oscillator Status Interrupt Disable
       MOSCXTS        : Boolean := False;
       --  Write-only. PLLA Lock Interrupt Disable
@@ -728,10 +750,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_19_31 : ATSAM3X8E.UInt13 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_IDR_Register use record
+   for PMC_IDR_Register_Value use record
       MOSCXTS        at 0 range 0 .. 0;
       LOCKA          at 0 range 1 .. 1;
       Reserved_2_2   at 0 range 2 .. 2;
@@ -746,6 +767,9 @@ package ATSAM3X8E.PMC is
       CFDEV          at 0 range 18 .. 18;
       Reserved_19_31 at 0 range 19 .. 31;
    end record;
+
+   type PMC_IDR_Register is new PMC_IDR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_SR_PCKRDY array
    type PMC_SR_PCKRDY_Field_Array is array (0 .. 2) of Boolean
@@ -772,7 +796,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Status Register
-   type PMC_SR_Register is record
+   type PMC_SR_Register_Value is record
       --  Read-only. Main XTAL Oscillator Status
       MOSCXTS        : Boolean;
       --  Read-only. PLLA Lock Status
@@ -804,10 +828,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_21_31 : ATSAM3X8E.UInt11;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_SR_Register use record
+   for PMC_SR_Register_Value use record
       MOSCXTS        at 0 range 0 .. 0;
       LOCKA          at 0 range 1 .. 1;
       Reserved_2_2   at 0 range 2 .. 2;
@@ -824,6 +847,9 @@ package ATSAM3X8E.PMC is
       FOS            at 0 range 20 .. 20;
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
+
+   type PMC_SR_Register is new PMC_SR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_IMR_PCKRDY array
    type PMC_IMR_PCKRDY_Field_Array is array (0 .. 2) of Boolean
@@ -850,7 +876,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Interrupt Mask Register
-   type PMC_IMR_Register is record
+   type PMC_IMR_Register_Value is record
       --  Read-only. Main Crystal Oscillator Status Interrupt Mask
       MOSCXTS        : Boolean;
       --  Read-only. PLLA Lock Interrupt Mask
@@ -878,10 +904,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_19_31 : ATSAM3X8E.UInt13;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_IMR_Register use record
+   for PMC_IMR_Register_Value use record
       MOSCXTS        at 0 range 0 .. 0;
       LOCKA          at 0 range 1 .. 1;
       Reserved_2_2   at 0 range 2 .. 2;
@@ -896,6 +921,9 @@ package ATSAM3X8E.PMC is
       CFDEV          at 0 range 18 .. 18;
       Reserved_19_31 at 0 range 19 .. 31;
    end record;
+
+   type PMC_IMR_Register is new PMC_IMR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_FSMR_FSTT array
    type PMC_FSMR_FSTT_Field_Array is array (0 .. 15) of Boolean
@@ -922,7 +950,7 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Fast Start-up Mode Register
-   type PMC_FSMR_Register is record
+   type PMC_FSMR_Register_Value is record
       --  Fast Start-up Input Enable 0
       FSTT           : PMC_FSMR_FSTT_Field :=
                         (As_Array => False, Val => 16#0#);
@@ -939,10 +967,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_21_31 : ATSAM3X8E.UInt11 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_FSMR_Register use record
+   for PMC_FSMR_Register_Value use record
       FSTT           at 0 range 0 .. 15;
       RTTAL          at 0 range 16 .. 16;
       RTCAL          at 0 range 17 .. 17;
@@ -951,6 +978,9 @@ package ATSAM3X8E.PMC is
       LPM            at 0 range 20 .. 20;
       Reserved_21_31 at 0 range 21 .. 31;
    end record;
+
+   type PMC_FSMR_Register is new PMC_FSMR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_FSPR_FSTP array
    type PMC_FSPR_FSTP_Field_Array is array (0 .. 15) of Boolean
@@ -977,35 +1007,39 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Fast Start-up Polarity Register
-   type PMC_FSPR_Register is record
+   type PMC_FSPR_Register_Value is record
       --  Fast Start-up Input Polarityx
       FSTP           : PMC_FSPR_FSTP_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
       Reserved_16_31 : ATSAM3X8E.UInt16 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_FSPR_Register use record
+   for PMC_FSPR_Register_Value use record
       FSTP           at 0 range 0 .. 15;
       Reserved_16_31 at 0 range 16 .. 31;
    end record;
 
+   type PMC_FSPR_Register is new PMC_FSPR_Register_Value
+     with Volatile_Full_Access;
+
    --  Fault Output Clear Register
-   type PMC_FOCR_Register is record
+   type PMC_FOCR_Register_Value is record
       --  Write-only. Fault Output Clear
       FOCLR         : Boolean := False;
       --  unspecified
       Reserved_1_31 : ATSAM3X8E.UInt31 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_FOCR_Register use record
+   for PMC_FOCR_Register_Value use record
       FOCLR         at 0 range 0 .. 0;
       Reserved_1_31 at 0 range 1 .. 31;
    end record;
+
+   type PMC_FOCR_Register is new PMC_FOCR_Register_Value
+     with Volatile_Full_Access;
 
    --  Write Protect KEY
    type PMC_WPMR_WPKEY_Field is
@@ -1020,7 +1054,7 @@ package ATSAM3X8E.PMC is
       PASSWD => 5262659);
 
    --  Write Protect Mode Register
-   type PMC_WPMR_Register is record
+   type PMC_WPMR_Register_Value is record
       --  Write Protect Enable
       WPEN         : Boolean := False;
       --  unspecified
@@ -1028,19 +1062,21 @@ package ATSAM3X8E.PMC is
       --  Write Protect KEY
       WPKEY        : PMC_WPMR_WPKEY_Field := PMC_WPMR_WPKEY_Field_Reset;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_WPMR_Register use record
+   for PMC_WPMR_Register_Value use record
       WPEN         at 0 range 0 .. 0;
       Reserved_1_7 at 0 range 1 .. 7;
       WPKEY        at 0 range 8 .. 31;
    end record;
 
+   type PMC_WPMR_Register is new PMC_WPMR_Register_Value
+     with Volatile_Full_Access;
+
    subtype PMC_WPSR_WPVSRC_Field is ATSAM3X8E.UInt16;
 
    --  Write Protect Status Register
-   type PMC_WPSR_Register is record
+   type PMC_WPSR_Register_Value is record
       --  Read-only. Write Protect Violation Status
       WPVS           : Boolean;
       --  unspecified
@@ -1050,15 +1086,17 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_24_31 : ATSAM3X8E.Byte;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_WPSR_Register use record
+   for PMC_WPSR_Register_Value use record
       WPVS           at 0 range 0 .. 0;
       Reserved_1_7   at 0 range 1 .. 7;
       WPVSRC         at 0 range 8 .. 23;
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
+
+   type PMC_WPSR_Register is new PMC_WPSR_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCER1_PID array
    type PMC_PCER1_PID_Field_Array is array (32 .. 44) of Boolean
@@ -1085,20 +1123,22 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Enable Register 1
-   type PMC_PCER1_Register is record
+   type PMC_PCER1_Register_Value is record
       --  Write-only. Peripheral Clock 32 Enable
       PID            : PMC_PCER1_PID_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
       Reserved_13_31 : ATSAM3X8E.UInt19 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCER1_Register use record
+   for PMC_PCER1_Register_Value use record
       PID            at 0 range 0 .. 12;
       Reserved_13_31 at 0 range 13 .. 31;
    end record;
+
+   type PMC_PCER1_Register is new PMC_PCER1_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCDR1_PID array
    type PMC_PCDR1_PID_Field_Array is array (32 .. 44) of Boolean
@@ -1125,20 +1165,22 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Disable Register 1
-   type PMC_PCDR1_Register is record
+   type PMC_PCDR1_Register_Value is record
       --  Write-only. Peripheral Clock 32 Disable
       PID            : PMC_PCDR1_PID_Field :=
                         (As_Array => False, Val => 16#0#);
       --  unspecified
       Reserved_13_31 : ATSAM3X8E.UInt19 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCDR1_Register use record
+   for PMC_PCDR1_Register_Value use record
       PID            at 0 range 0 .. 12;
       Reserved_13_31 at 0 range 13 .. 31;
    end record;
+
+   type PMC_PCDR1_Register is new PMC_PCDR1_Register_Value
+     with Volatile_Full_Access;
 
    --  PMC_PCSR1_PID array
    type PMC_PCSR1_PID_Field_Array is array (32 .. 44) of Boolean
@@ -1165,19 +1207,21 @@ package ATSAM3X8E.PMC is
    end record;
 
    --  Peripheral Clock Status Register 1
-   type PMC_PCSR1_Register is record
+   type PMC_PCSR1_Register_Value is record
       --  Read-only. Peripheral Clock 32 Status
       PID            : PMC_PCSR1_PID_Field;
       --  unspecified
       Reserved_13_31 : ATSAM3X8E.UInt19;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCSR1_Register use record
+   for PMC_PCSR1_Register_Value use record
       PID            at 0 range 0 .. 12;
       Reserved_13_31 at 0 range 13 .. 31;
    end record;
+
+   type PMC_PCSR1_Register is new PMC_PCSR1_Register_Value
+     with Volatile_Full_Access;
 
    subtype PMC_PCR_PID_Field is ATSAM3X8E.UInt6;
 
@@ -1196,7 +1240,7 @@ package ATSAM3X8E.PMC is
       PERIPH_DIV4_MCK => 2);
 
    --  Peripheral Control Register
-   type PMC_PCR_Register is record
+   type PMC_PCR_Register_Value is record
       --  Peripheral ID
       PID            : PMC_PCR_PID_Field := 16#0#;
       --  unspecified
@@ -1214,10 +1258,9 @@ package ATSAM3X8E.PMC is
       --  unspecified
       Reserved_29_31 : ATSAM3X8E.UInt3 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for PMC_PCR_Register use record
+   for PMC_PCR_Register_Value use record
       PID            at 0 range 0 .. 5;
       Reserved_6_11  at 0 range 6 .. 11;
       CMD            at 0 range 12 .. 12;
@@ -1227,6 +1270,9 @@ package ATSAM3X8E.PMC is
       EN             at 0 range 28 .. 28;
       Reserved_29_31 at 0 range 29 .. 31;
    end record;
+
+   type PMC_PCR_Register is new PMC_PCR_Register_Value
+     with Volatile_Full_Access;
 
    -----------------
    -- Peripherals --

@@ -16,7 +16,7 @@ package ATSAM3X8E.EFC is
    subtype EFC0_FMR_FWS_Field is ATSAM3X8E.UInt4;
 
    --  EEFC Flash Mode Register
-   type EFC0_FMR_Register is record
+   type EFC0_FMR_Register_Value is record
       --  Ready Interrupt Enable
       FRDY           : Boolean := False;
       --  unspecified
@@ -34,10 +34,9 @@ package ATSAM3X8E.EFC is
       --  unspecified
       Reserved_25_31 : ATSAM3X8E.UInt7 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for EFC0_FMR_Register use record
+   for EFC0_FMR_Register_Value use record
       FRDY           at 0 range 0 .. 0;
       Reserved_1_7   at 0 range 1 .. 7;
       FWS            at 0 range 8 .. 11;
@@ -47,6 +46,9 @@ package ATSAM3X8E.EFC is
       FAM            at 0 range 24 .. 24;
       Reserved_25_31 at 0 range 25 .. 31;
    end record;
+
+   type EFC0_FMR_Register is new EFC0_FMR_Register_Value
+     with Volatile_Full_Access;
 
    --  Flash Command
    type FCR_FCMD_Field is
@@ -114,7 +116,7 @@ package ATSAM3X8E.EFC is
       PASSWD => 90);
 
    --  EEFC Flash Command Register
-   type EFC0_FCR_Register is record
+   type EFC0_FCR_Register_Value is record
       --  Write-only. Flash Command
       FCMD : FCR_FCMD_Field := ATSAM3X8E.EFC.GETD;
       --  Write-only. Flash Command Argument
@@ -122,17 +124,19 @@ package ATSAM3X8E.EFC is
       --  Write-only. Flash Writing Protection Key
       FKEY : FCR_FKEY_Field := FCR_FKEY_Field_Reset;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for EFC0_FCR_Register use record
+   for EFC0_FCR_Register_Value use record
       FCMD at 0 range 0 .. 7;
       FARG at 0 range 8 .. 23;
       FKEY at 0 range 24 .. 31;
    end record;
 
+   type EFC0_FCR_Register is new EFC0_FCR_Register_Value
+     with Volatile_Full_Access;
+
    --  EEFC Flash Status Register
-   type EFC0_FSR_Register is record
+   type EFC0_FSR_Register_Value is record
       --  Read-only. Flash Ready Status
       FRDY          : Boolean;
       --  Read-only. Flash Command Error Status
@@ -142,15 +146,17 @@ package ATSAM3X8E.EFC is
       --  unspecified
       Reserved_3_31 : ATSAM3X8E.UInt29;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
-          Bit_Order => System.Low_Order_First;
+     with Object_Size => 32, Bit_Order => System.Low_Order_First;
 
-   for EFC0_FSR_Register use record
+   for EFC0_FSR_Register_Value use record
       FRDY          at 0 range 0 .. 0;
       FCMDE         at 0 range 1 .. 1;
       FLOCKE        at 0 range 2 .. 2;
       Reserved_3_31 at 0 range 3 .. 31;
    end record;
+
+   type EFC0_FSR_Register is new EFC0_FSR_Register_Value
+     with Volatile_Full_Access;
 
    -----------------
    -- Peripherals --
