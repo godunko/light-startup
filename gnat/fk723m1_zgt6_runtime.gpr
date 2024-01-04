@@ -1,0 +1,38 @@
+--
+--  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+library project FK723M1_ZGT6_Runtime is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "light-cortex-m7df";
+
+   for Library_Name use "fk723m1zgt6";
+   for Library_Dir use "../.libs";
+
+   for Object_Dir use "../.objs";
+   for Source_Dirs use
+     ("../source/board/fk723m1-zgt6",
+      "../source/mcu/stm32h723",
+      "../source/cpu/cm7",
+      "../source/cpu/armv7");
+
+   Linker_Switches :=
+     (
+        "-Wl,--undefined=__light_exceptions_vector",
+        "-Wl,--undefined=__light_interrupts_vector",
+        "-L", Project'Project_Dir & "../source/ld",
+        "-T", "stm32h723zgt6-flash.ld"
+     );
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g",
+         "-O2",
+         "-ffunction-sections",
+         "-fdata-sections");
+   end Compiler;
+
+end FK723M1_ZGT6_Runtime;

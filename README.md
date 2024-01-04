@@ -7,3 +7,4 @@ no Asm or C code).
 
 Supported boards:
  - Arduino Due (SAM3X8E, Cortex-M3)
+ - FK723M1-ZGT6 (STM32H723ZGT6, Cortex-M7)
