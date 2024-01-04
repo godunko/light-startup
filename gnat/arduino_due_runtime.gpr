@@ -22,7 +22,8 @@ library project Arduino_Due_Runtime is
      (
         "-Wl,--undefined=__light_exceptions_vector",
         "-Wl,--undefined=__light_interrupts_vector",
-        "-T", Project'Project_Dir & "../source/ld/sam3x8e-flash.ld"
+        "-L", Project'Project_Dir & "../source/ld",
+        "-T", "sam3x8e-flash.ld"
      );
 
    package Compiler is

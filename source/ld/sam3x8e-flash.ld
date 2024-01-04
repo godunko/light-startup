@@ -6,70 +6,20 @@
 
 /* SAM3X8E */
 
-/*
- * This script exports following symbols to be used by startup code:
- *   _sdata    start of the preinitialized data (in RAM)
- *   _edata    end of the preinitialized data (in RAM)
- *   _sidata   start of the preinitialized data secrion in ROM
- *   _sbss     start of the uninitialized data (in RAM)
- *   _ebss     start of the uninitialized data (in RAM)
- *   _estack   address of the initial stack pointer
- */
-
 MEMORY
 {
-    rom (rx)    : ORIGIN = 0x00080000, LENGTH = 0x00080000 /* Flash, 512K */
-    ram (rwx)   : ORIGIN = 0x20070000, LENGTH = 0x00018000 /* SRAM, 96K */
+    flash (rx) : ORIGIN = 0x00080000, LENGTH = 0x00080000 /* Flash, 512K */
+    ram (rwx)  : ORIGIN = 0x20070000, LENGTH = 0x00018000 /* SRAM, 96K */
 }
 
-_estack = ORIGIN(ram) + LENGTH (ram);
+/* Aliases to map default sections to the memory regions */
 
-SECTIONS
-{
-    /* Events vector is composed from the exceptions vector of the CPU and
-       the interrupts vector of the MCU, they are declared in the different
-       sections */
-    .vectors :
-    {
-        KEEP(*(.vectors.exceptions.*))
-        KEEP(*(.vectors.interrupts.*))
-    } > rom
+REGION_ALIAS("DEFAULT_VECTORS", flash);
+REGION_ALIAS("DEFAULT_TEXT",    flash);
+REGION_ALIAS("DEFAULT_RODATA",  flash);
+REGION_ALIAS("DEFAULT_DATA",    ram);
+REGION_ALIAS("DEFAULT_IDATA",   flash);  /* info to initialize DEFAULT_DATA */
+REGION_ALIAS("DEFAULT_BSS",     ram);
+REGION_ALIAS("DEFAULT_STACK",   ram);
 
-    .text :
-    {
-        *(.text .text.*)
-    } > rom
-
-    .rodata :
-    {
-        . = ALIGN(4);     /* Ensure that the start of the section is word aligned */
-
-        *(.rodata .rodata.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-    }
-
-    .data :
-    {
-        . = ALIGN(4);     /* Ensure that the start of the section is word aligned */
-        _sdata = .;       /* Global symbol at data start */
-
-        *(.data .data.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-        _edata = .;       /* Global symbol at data end */
-    } > ram AT > rom
-    _sidata = LOADADDR(.data);
-
-    .bss :
-    {
-        . = ALIGN(4);     /* Ensure that the start of the section is word aligned */
-        _sbss = .;        /* Global symbol at bss start */
-
-        *(.bss .bss.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-        _ebss = .;        /* Global symbol at bss end */
-    } > ram
-
-}
+INCLUDE armv7.ld
