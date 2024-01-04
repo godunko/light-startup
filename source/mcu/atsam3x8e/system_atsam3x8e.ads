@@ -4,7 +4,7 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
---  SAM3X8E
+--  ATSAM3X8E
 --
 --  This package provides interrupts part of the vector table. It uses
 --  following external symbols to construct vector table:
@@ -55,11 +55,11 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System_ARMv7;
 
-package System_SAM3X8E is
+package System_ATSAM3X8E is
 
    pragma Elaborate_Body;
 
    subtype SAM3X8E_Interrupt_Event_Identifier is
      System_ARMv7.Interrupt_Event_Identifier range 0 .. 44;
 
-end System_SAM3X8E;
+end System_ATSAM3X8E;

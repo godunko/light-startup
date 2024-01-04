@@ -6,7 +6,7 @@
 
 --  Arduino Due
 
-with System_SAM3X8E.Startup_Utilities; use System_SAM3X8E.Startup_Utilities;
+with System_ATSAM3X8E.Startup_Utilities; use System_ATSAM3X8E.Startup_Utilities;
 
 separate (System_ARMv7)
 procedure System_Init is

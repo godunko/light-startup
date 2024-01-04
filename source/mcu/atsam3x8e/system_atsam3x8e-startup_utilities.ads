@@ -4,13 +4,13 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
---  SAM3X8E
+--  ATSAM3X8E
 --
 --  Various subprograms to be used by startup code.
 
 pragma Restrictions (No_Elaboration_Code);
 
-package System_SAM3X8E.Startup_Utilities is
+package System_ATSAM3X8E.Startup_Utilities is
 
    pragma Elaborate_Body;
 
@@ -25,4 +25,4 @@ package System_SAM3X8E.Startup_Utilities is
    --  (internal RC oscillator, different frequency of the external
    --  oscillator, or external clock)
 
-end System_SAM3X8E.Startup_Utilities;
+end System_ATSAM3X8E.Startup_Utilities;

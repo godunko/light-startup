@@ -6,7 +6,7 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with System_SAM3X8E;
+with System_ATSAM3X8E;
 
 package body System_Arduino_Due is
 

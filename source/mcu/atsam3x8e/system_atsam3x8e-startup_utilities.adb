@@ -9,7 +9,7 @@ pragma Restrictions (No_Elaboration_Code);
 with ATSAM3X8E.EFC; use ATSAM3X8E.EFC;
 with ATSAM3X8E.PMC; use ATSAM3X8E.PMC;
 
-package body System_SAM3X8E.Startup_Utilities is
+package body System_ATSAM3X8E.Startup_Utilities is
 
    X_OSC_Frequency          : constant := 12_000_000;
    --  Extrenal oscillator frequency.
@@ -188,4 +188,4 @@ package body System_SAM3X8E.Startup_Utilities is
       end loop;
    end Setup_External_Oscillator;
 
-end System_SAM3X8E.Startup_Utilities;
+end System_ATSAM3X8E.Startup_Utilities;

@@ -4,7 +4,7 @@
  *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
  */
 
-/* SAM3X8E */
+/* ATSAM3X8E */
 
 MEMORY
 {

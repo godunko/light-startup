@@ -8,7 +8,7 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System;
 
-package body System_SAM3X8E is
+package body System_ATSAM3X8E is
 
    procedure Dummy_Interrupt_Handler
      with Export, Convention => C, External_Name => "Dummy_Interrupt_Handler";
@@ -278,4 +278,4 @@ package body System_SAM3X8E is
    procedure Dummy_Interrupt_Handler
      renames System_ARMv7.Dummy_Exception_Handler;
 
-end System_SAM3X8E;
+end System_ATSAM3X8E;

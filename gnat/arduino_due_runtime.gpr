@@ -15,7 +15,7 @@ library project Arduino_Due_Runtime is
    for Object_Dir use "../.objs";
    for Source_Dirs use
      ("../source/board/arduino_due",
-      "../source/mcu/sam3x8e",
+      "../source/mcu/atsam3x8e",
       "../source/cpu/armv7");
 
    Linker_Switches :=
@@ -23,7 +23,7 @@ library project Arduino_Due_Runtime is
         "-Wl,--undefined=__light_exceptions_vector",
         "-Wl,--undefined=__light_interrupts_vector",
         "-L", Project'Project_Dir & "../source/ld",
-        "-T", "sam3x8e-flash.ld"
+        "-T", "atsam3x8e-flash.ld"
      );
 
    package Compiler is
