@@ -58,7 +58,7 @@ SECTIONS
     } > DEFAULT_DATA AT > DEFAULT_IDATA
     _sidata = LOADADDR(.data);
 
-    .bss : ALIGN(4)  /* Ensure that the start of the section is word aligned */
+    .bss (NOLOAD) : ALIGN(4)  /* Ensure that the start of the section is word aligned */
     {
         _sbss = .;        /* Global symbol at bss start */
 
