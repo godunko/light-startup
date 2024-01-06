@@ -53,13 +53,13 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with System_ARMv7;
+with System_ARMv7M;
 
 package System_ATSAM3X8E is
 
    pragma Elaborate_Body;
 
    subtype SAM3X8E_Interrupt_Event_Identifier is
-     System_ARMv7.Interrupt_Event_Identifier range 0 .. 44;
+     System_ARMv7M.Interrupt_Event_Identifier range 0 .. 44;
 
 end System_ATSAM3X8E;

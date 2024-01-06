@@ -148,13 +148,13 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with System_ARMv7;
+with System_ARMv7M;
 
 package System_STM32H723 is
 
    pragma Elaborate_Body;
 
    subtype STM32H723_Interrupt_Event_Identifier is
-     System_ARMv7.Interrupt_Event_Identifier range 0 .. 162;
+     System_ARMv7M.Interrupt_Event_Identifier range 0 .. 162;
 
 end System_STM32H723;

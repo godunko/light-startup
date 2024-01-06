@@ -10,7 +10,7 @@ with System.Storage_Elements;
 
 with System_Types;
 
-package System_ARMv7.SysTick is
+package System_ARMv7M.SysTick is
 
    type SYST_CSR_Register is record
       ENABLE         : Boolean := False;
@@ -75,4 +75,4 @@ package System_ARMv7.SysTick is
 
    SYST : SYST_Registers with Import, Address => SYST_Base;
 
-end System_ARMv7.SysTick;
+end System_ARMv7M.SysTick;

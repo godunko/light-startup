@@ -874,6 +874,6 @@ package body System_STM32H723 is
    -----------------------------
 
    procedure Dummy_Interrupt_Handler
-     renames System_ARMv7.Dummy_Exception_Handler;
+     renames System_ARMv7M.Dummy_Exception_Handler;
 
 end System_STM32H723;

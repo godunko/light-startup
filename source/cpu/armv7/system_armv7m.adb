@@ -8,7 +8,7 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System;
 
-package body System_ARMv7 is
+package body System_ARMv7M is
 
    estack : constant System.Address
      with Import, Convention => C, External_Name => "_estack";
@@ -137,4 +137,4 @@ package body System_ARMv7 is
 
    procedure System_Init is separate;
 
-end System_ARMv7;
+end System_ARMv7M;

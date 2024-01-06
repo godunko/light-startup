@@ -8,7 +8,7 @@
 
 with System_ATSAM3X8E.Startup_Utilities; use System_ATSAM3X8E.Startup_Utilities;
 
-separate (System_ARMv7)
+separate (System_ARMv7M)
 procedure System_Init is
 begin
    Setup_External_Oscillator;

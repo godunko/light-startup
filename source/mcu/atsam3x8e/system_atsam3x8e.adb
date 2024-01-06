@@ -276,6 +276,6 @@ package body System_ATSAM3X8E is
    -----------------------------
 
    procedure Dummy_Interrupt_Handler
-     renames System_ARMv7.Dummy_Exception_Handler;
+     renames System_ARMv7M.Dummy_Exception_Handler;
 
 end System_ATSAM3X8E;

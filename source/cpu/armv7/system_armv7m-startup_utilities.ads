@@ -8,7 +8,7 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-package System_ARMv7.Startup_Utilities is
+package System_ARMv7M.Startup_Utilities is
 
    procedure Copy_Data_Section;
    --  Copy '.data' from the flash to the RAM region.
@@ -57,4 +57,4 @@ package System_ARMv7.Startup_Utilities is
    --  This subprogram is intended to be used on Cortex-M7 only. DTCM RAM
    --  must be enabled and configured by the System_Init subprogram.
 
-end System_ARMv7.Startup_Utilities;
+end System_ARMv7M.Startup_Utilities;

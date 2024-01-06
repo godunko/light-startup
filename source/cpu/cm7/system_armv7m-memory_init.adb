@@ -6,9 +6,9 @@
 
 --  ARMv7/Cortex-M7
 
-with System_ARMv7.Startup_Utilities; use System_ARMv7.Startup_Utilities;
+with System_ARMv7M.Startup_Utilities; use System_ARMv7M.Startup_Utilities;
 
-separate (System_ARMv7)
+separate (System_ARMv7M)
 procedure Memory_Init is
 begin
    Copy_Data_Section;

@@ -12,7 +12,7 @@ with System.Storage_Elements;
 
 with System_Types;
 
-package body System_ARMv7.Startup_Utilities is
+package body System_ARMv7M.Startup_Utilities is
 
    procedure Copy
      (Start_Address : System.Address;
@@ -167,4 +167,4 @@ package body System_ARMv7.Startup_Utilities is
       Fill (sdtcmbss'Address, edtcmbss'Address);
    end Fill_DTCM_BSS_Section;
 
-end System_ARMv7.Startup_Utilities;
+end System_ARMv7M.Startup_Utilities;

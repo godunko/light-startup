@@ -10,7 +10,7 @@ with STM32H723.Flash; use STM32H723.Flash;
 with STM32H723.PWR;   use STM32H723.PWR;
 with STM32H723.RCC;   use STM32H723.RCC;
 
-separate (System_ARMv7)
+separate (System_ARMv7M)
 procedure System_Init is
 
    use type ACR_LATENCY_Field;
