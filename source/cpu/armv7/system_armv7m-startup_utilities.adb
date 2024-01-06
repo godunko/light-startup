@@ -10,6 +10,7 @@ pragma Ada_2022;
 with Interfaces;
 with System.Storage_Elements;
 
+with System_ARMv7M.SCB;
 with System_Types;
 
 package body System_ARMv7M.Startup_Utilities is
@@ -109,6 +110,20 @@ package body System_ARMv7M.Startup_Utilities is
    begin
       Copy (sdtcmdata'Address, edtcmdata'Address, sidtcmdata'Address);
    end Copy_ITCM_Text_Section;
+
+   ----------------
+   -- Enable_FPU --
+   ----------------
+
+   procedure Enable_FPU is
+      Aux : SCB.SCB_CPACR_Register := SCB.SCB.CPACR;
+
+   begin
+      Aux.CP10 := 2#11#;
+      Aux.CP11 := 2#11#;
+
+      SCB.SCB.CPACR := Aux;
+   end Enable_FPU;
 
    ----------
    -- Fill --

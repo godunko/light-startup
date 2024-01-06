@@ -6,9 +6,12 @@
 
 --  FK723M1-ZGT6
 
-with STM32H723.Flash; use STM32H723.Flash;
-with STM32H723.PWR;   use STM32H723.PWR;
-with STM32H723.RCC;   use STM32H723.RCC;
+with STM32H723.Flash;                 use STM32H723.Flash;
+with STM32H723.PWR;                   use STM32H723.PWR;
+with STM32H723.RCC;                   use STM32H723.RCC;
+
+with System_ARMv7M.CM7;               use System_ARMv7M.CM7;
+with System_ARMv7M.Startup_Utilities; use System_ARMv7M.Startup_Utilities;
 
 separate (System_ARMv7M)
 procedure System_Init is
@@ -206,6 +209,10 @@ procedure System_Init is
    end Configure_Voltage_Scaling;
 
 begin
+   Enable_FPU;
+   Enable_ICache;
+   Enable_DCache;
+
    Configure_Power_Supply_LDO;
    Configure_Voltage_Scaling (VOS0);
    Configure_External_Crystal_Oscillator;
