@@ -10,6 +10,8 @@ pragma Restrictions (No_Elaboration_Code);
 
 package System_Types is
 
+   type Integer_32 is range -2 ** 31 .. 2 ** 31 - 1 with Size => 32;
+
    type Unsigned_2 is mod 2 ** 2 with Size => 2;
    type Unsigned_3 is mod 2 ** 3 with Size => 3;
    type Unsigned_4 is mod 2 ** 4 with Size => 4;
@@ -38,6 +40,7 @@ package System_Types is
    type Reserved_15 is private;
 
    type Reserved_28 is private;
+   type Reserved_29 is private;
 
    type Reserved_32 is private;
 
@@ -57,6 +60,7 @@ private
    type Reserved_15 is mod 2 ** 15 with Size => 15;
 
    type Reserved_28 is mod 2 ** 28 with Size => 28;
+   type Reserved_29 is mod 2 ** 29 with Size => 29;
 
    type Reserved_32 is mod 2 ** 32 with Size => 32;
 

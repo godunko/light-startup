@@ -14,7 +14,7 @@ with System_Types;        use System_Types;
 package body System_ARMv7M.CM7 is
 
    function clz
-     (Item : System_Types.Unsigned_32) return System_Types.Unsigned_32
+     (Item : System_Types.Unsigned_32) return System_Types.Integer_32
         with Import, Convention => Intrinsic, External_Name => "__builtin_clz";
 
    function Shift_Left
