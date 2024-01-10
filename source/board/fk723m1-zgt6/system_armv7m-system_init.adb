@@ -6,11 +6,16 @@
 
 --  FK723M1-ZGT6
 
+with System.Storage_Elements;
+
 with STM32H723.Flash;                 use STM32H723.Flash;
 with STM32H723.PWR;                   use STM32H723.PWR;
 with STM32H723.RCC;                   use STM32H723.RCC;
 
 with System_ARMv7M.CM7;               use System_ARMv7M.CM7;
+with System_ARMv7M.CMSIS;             use System_ARMv7M.CMSIS;
+with System_ARMv7M.MPU;               use System_ARMv7M.MPU;
+with System_ARMv7M.SCB;               use System_ARMv7M.SCB;
 with System_ARMv7M.Startup_Utilities; use System_ARMv7M.Startup_Utilities;
 
 separate (System_ARMv7M)
@@ -210,6 +215,48 @@ procedure System_Init is
 
 begin
    Enable_FPU;
+
+   --  Use MPU to protect ExtRAM (@0x6000_0000/0x8000_0000) and ExtDev
+   --  (@0xA000_0000/0xC000_0000) regions from any access. It is recommended
+   --  to prevent speculative read access of the Cortex-M7 CPU to these
+   --  regions.
+
+   MPU.MPU.MPU_RBAR.ADDR :=
+     System.Storage_Elements.To_Address (16#0000_0000#);
+   MPU.MPU.MPU_RASR :=
+     (ENABLE => True,
+      SIZE   => 16#1F#,
+      SRD    => 2#1000_0111#,
+      B      => False,
+      C      => False,
+      S      => True,
+      TEX    => 2#000#,
+      AP     => 2#000#,
+      XN     => True,  --  Execution of an instruction fetched from this region not permitted
+      others => <>);
+
+   --  Complete configuration and enable MPU
+
+   declare
+      Aux : MPU_CTRL_Register := MPU.MPU.MPU_CTRL;
+
+   begin
+      Aux.PRIVDEFENA := True;
+      --  Enable use of default memory map in privileged mode.
+      Aux.HFNMIENA   := False;
+      --  Don't use any memory map when execute NMI/HardFault handlers.
+      Aux.ENABLE     := True;
+      --  Enable MPU.
+
+      MPU.MPU.MPU_CTRL := Aux;
+   end;
+
+   SCB.SCB.SHCSR.MEMFAULTENA := True;
+   --  Enable memory fault exception
+
+   Data_Synchronization_Barrier;
+   Instruction_Synchronization_Barrier;
+
    Enable_ICache;
    Enable_DCache;
 

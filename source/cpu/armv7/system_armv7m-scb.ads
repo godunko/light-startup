@@ -106,6 +106,48 @@ package System_ARMv7M.SCB is
       Reserved_24_31 at 0 range 24 .. 31;
    end record;
 
+   type SCB_SHCSR_Register is record
+      MEMFAULTACT    : Boolean;
+      BUSFAULTACT    : Boolean;
+      Reserved_2     : System_Types.Reserved_1;
+      USGFAULTACT    : Boolean;
+      Reserved_4_6   : System_Types.Reserved_3;
+      SVCALLACT      : Boolean;
+      MONITORACT     : Boolean;
+      Reserved_9     : System_Types.Reserved_1;
+      PENDSVACT      : Boolean;
+      SYSTICKACT     : Boolean;
+      USGFAULTPENDED : Boolean;
+      MEMFAULTPENDED : Boolean;
+      BUSFAULTPENDED : Boolean;
+      SVCALLPENDED   : Boolean;
+      MEMFAULTENA    : Boolean;
+      BUSFAULTENA    : Boolean;
+      USGFAULTENA    : Boolean;
+      Reserved_19_31 : System_Types.Reserved_13;
+   end record with Object_Size => 32;
+
+   for SCB_SHCSR_Register use record
+      MEMFAULTACT    at 0 range 0 .. 0;
+      BUSFAULTACT    at 0 range 1 .. 1;
+      Reserved_2     at 0 range 2 .. 2;
+      USGFAULTACT    at 0 range 3 .. 3;
+      Reserved_4_6   at 0 range 4 .. 6;
+      SVCALLACT      at 0 range 7 .. 7;
+      MONITORACT     at 0 range 8 .. 8;
+      Reserved_9     at 0 range 9 .. 9;
+      PENDSVACT      at 0 range 10 .. 10;
+      SYSTICKACT     at 0 range 11 .. 11;
+      USGFAULTPENDED at 0 range 12 .. 12;
+      MEMFAULTPENDED at 0 range 13 .. 13;
+      BUSFAULTPENDED at 0 range 14 .. 14;
+      SVCALLPENDED   at 0 range 15 .. 15;
+      MEMFAULTENA    at 0 range 16 .. 16;
+      BUSFAULTENA    at 0 range 17 .. 17;
+      USGFAULTENA    at 0 range 18 .. 18;
+      Reserved_19_31 at 0 range 19 .. 31;
+   end record;
+
    type SCB_Registers is record
       CPUID    : System_Types.Reserved_32;
       ICSR     : System_Types.Reserved_32;
@@ -116,7 +158,7 @@ package System_ARMv7M.SCB is
       SHPR1    : System_Types.Reserved_32;
       SHPR2    : System_Types.Reserved_32;
       SHPR3    : System_Types.Reserved_32;
-      SHCSR    : System_Types.Reserved_32;
+      SHCSR    : SCB_SHCSR_Register  with Volatile_Full_Access;
       CFSR     : System_Types.Reserved_32;
       HFSR     : System_Types.Reserved_32;
       DFSR     : System_Types.Reserved_32;

@@ -15,6 +15,9 @@ package System_Types is
    type Unsigned_2 is mod 2 ** 2 with Size => 2;
    type Unsigned_3 is mod 2 ** 3 with Size => 3;
    type Unsigned_4 is mod 2 ** 4 with Size => 4;
+   type Unsigned_5 is mod 2 ** 5 with Size => 5;
+
+   type Unsigned_8 is mod 2 ** 8 with Size => 8;
 
    type Unsigned_10 is mod 2 ** 10 with Size => 10;
 
@@ -27,7 +30,7 @@ package System_Types is
    type Unsigned_64 is mod 2 ** 64 with Size => 64;
 
    type Reserved_1 is private;
-
+   type Reserved_2 is private;
    type Reserved_3 is private;
    type Reserved_4 is private;
 
@@ -47,7 +50,7 @@ package System_Types is
 private
 
    type Reserved_1 is mod 2 ** 1 with Size => 1;
-
+   type Reserved_2 is mod 2 ** 2 with Size => 2;
    type Reserved_3 is mod 2 ** 3 with Size => 3;
    type Reserved_4 is mod 2 ** 4 with Size => 4;
 
