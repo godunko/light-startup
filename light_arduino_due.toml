@@ -6,7 +6,7 @@ authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
 maintainers-logins = ["godunko"]
 
-project-files=["../../gnat/arduino_due_startup.gpr"]
+project-files=["gnat/arduino_due_startup.gpr"]
 
 tags = ["embedded", "bsp", "light", "sam3x8e", "arduino", "due"]
 

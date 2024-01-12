@@ -8,7 +8,7 @@ maintainers-logins = ["godunko"]
 
 tags = ["embedded", "bsp", "light", "stm32h723", "fk723m1"]
 
-project-files=["../../gnat/fk723m1_zgt6_startup.gpr"]
+project-files=["gnat/fk723m1_zgt6_startup.gpr"]
 
 [configuration]
 disabled = true
