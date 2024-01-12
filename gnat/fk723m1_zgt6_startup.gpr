@@ -4,7 +4,7 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
-library project FK723M1_ZGT6_Runtime is
+library project FK723M1_ZGT6_Startup is
 
    for Target use "arm-eabi";
    for Runtime ("Ada") use "light-cortex-m7df";
@@ -35,4 +35,4 @@ library project FK723M1_ZGT6_Runtime is
          "-fdata-sections");
    end Compiler;
 
-end FK723M1_ZGT6_Runtime;
+end FK723M1_ZGT6_Startup;

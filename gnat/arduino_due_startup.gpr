@@ -4,7 +4,7 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
-library project Arduino_Due_Runtime is
+library project Arduino_Due_Startup is
 
    for Target use "arm-eabi";
    for Runtime ("Ada") use "light-cortex-m3";
@@ -34,4 +34,4 @@ library project Arduino_Due_Runtime is
          "-fdata-sections");
    end Compiler;
 
-end Arduino_Due_Runtime;
+end Arduino_Due_Startup;
