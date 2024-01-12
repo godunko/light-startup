@@ -5,6 +5,7 @@ version = "0.1.0"
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
 maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
 
 tags = ["embedded", "bsp", "light", "stm32h723", "fk723m1"]
 

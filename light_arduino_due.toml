@@ -5,6 +5,7 @@ version = "0.1.0"
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
 maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
 
 project-files=["gnat/arduino_due_startup.gpr"]
 
