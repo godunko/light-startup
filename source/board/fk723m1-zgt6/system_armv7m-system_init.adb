@@ -8,13 +8,12 @@
 
 with System.Storage_Elements;
 
-with A0B.ARMv7M.CMSIS;                use A0B.ARMv7M.CMSIS;
+with A0B.ARMv7M.CMSIS;                  use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.Memory_Protection_Unit; use A0B.ARMv7M.Memory_Protection_Unit;
 with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
-
-with STM32H723.Flash;                   use STM32H723.Flash;
-with STM32H723.PWR;                     use STM32H723.PWR;
-with STM32H723.RCC;                     use STM32H723.RCC;
+with A0B.SVD.STM32H723.Flash;           use A0B.SVD.STM32H723.Flash;
+with A0B.SVD.STM32H723.PWR;             use A0B.SVD.STM32H723.PWR;
+with A0B.SVD.STM32H723.RCC;             use A0B.SVD.STM32H723.RCC;
 
 with System_ARMv7M.CM7;                 use System_ARMv7M.CM7;
 with System_ARMv7M.Startup_Utilities;   use System_ARMv7M.Startup_Utilities;
@@ -51,14 +50,13 @@ procedure System_Init is
       --  Set HSE configuration: crystal oscillator
 
       declare
-         Aux : STM32H723.RCC.CR_Register_Value :=
-           STM32H723.RCC.CR_Register_Value (RCC_Periph.CR);
+         Aux : A0B.SVD.STM32H723.RCC.CR_Register := RCC_Periph.CR;
 
       begin
          Aux.HSEON  := True;
          Aux.HSEBYP := False;
 
-         RCC_Periph.CR := STM32H723.RCC.CR_Register (Aux);
+         RCC_Periph.CR := Aux;
       end;
 
       --  Wait till HSE clock is ready.
@@ -87,8 +85,7 @@ procedure System_Init is
       --  Configure PLL1.
 
       declare
-         Aux : PLLCKSELR_Register_Value :=
-           PLLCKSELR_Register_Value (RCC_Periph.PLLCKSELR);
+         Aux : PLLCKSELR_Register := RCC_Periph.PLLCKSELR;
 
       begin
          Aux.PLLSRC := 2#10#;  --  HSE (hse_ck)
@@ -98,8 +95,7 @@ procedure System_Init is
       end;
 
       declare
-         Aux : PLL1DIVR_Register_Value :=
-           PLL1DIVR_Register_Value (RCC_Periph.PLL1DIVR);
+         Aux : PLL1DIVR_Register := RCC_Periph.PLL1DIVR;
 
       begin
          Aux.DIVN1  := MULN1;
@@ -107,7 +103,7 @@ procedure System_Init is
          Aux.DIVQ1  := 0;
          Aux.DIVR1  := 0;
 
-         RCC_Periph.PLL1DIVR := PLL1DIVR_Register (Aux);
+         RCC_Periph.PLL1DIVR := Aux;
       end;
 
       declare
