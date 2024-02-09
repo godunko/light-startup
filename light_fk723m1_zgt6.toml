@@ -17,3 +17,4 @@ disabled = true
 [[depends-on]]
 gnat_arm_elf = "*"
 a0b_base = "*"
+a0b_armv7m = "*"

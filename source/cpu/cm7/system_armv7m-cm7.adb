@@ -8,10 +8,9 @@ pragma Restrictions (No_Elaboration_Code);
 
 pragma Ada_2022;
 
-with A0B.Types;           use A0B.Types;
-
-with System_ARMv7M.CMSIS; use System_ARMv7M.CMSIS;
-with System_ARMv7M.SCB;   use System_ARMv7M.SCB;
+with A0B.ARMv7M.CMSIS;                use A0B.ARMv7M.CMSIS;
+with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
+with A0B.Types;                       use A0B.Types;
 
 package body System_ARMv7M.CM7 is
 
@@ -43,13 +42,13 @@ package body System_ARMv7M.CM7 is
       --  Select Level 1 Data cache.
 
       declare
-         Aux : SCB_CSSELR_Register := SCB.SCB.CSSELR;
+         Aux : SCB_CSSELR_Register := SCB.CSSELR;
 
       begin
          Aux.InD   := False;
          Aux.Level := 0;
 
-         SCB.SCB.CSSELR := Aux;
+         SCB.CSSELR := Aux;
       end;
 
       Data_Synchronization_Barrier;
@@ -57,7 +56,7 @@ package body System_ARMv7M.CM7 is
       --  Compute data cache parameters and shifts of fields in DCISW
       --  regisger.
 
-      CCSIDR := SCB.SCB.CCSIDR;
+      CCSIDR := SCB.CCSIDR;
 
       Ways := Unsigned_32 (CCSIDR.Associativity);
       Sets := Unsigned_32 (CCSIDR.NumSets);
@@ -85,7 +84,7 @@ package body System_ARMv7M.CM7 is
                    or Shift_Left (Set, Set_Shift);
 
             begin
-               SCB.SCB_Cache.DCISW := Aux;
+               SCB_Cache.DCISW := Aux;
             end;
 
             exit when Set = 0;
@@ -100,7 +99,7 @@ package body System_ARMv7M.CM7 is
 
       Data_Synchronization_Barrier;
 
-      SCB.SCB.CCR.DC := True;
+      SCB.CCR.DC := True;
       --  Enable instruction cache
 
       Data_Synchronization_Barrier;
@@ -122,7 +121,7 @@ package body System_ARMv7M.CM7 is
       Data_Synchronization_Barrier;
       Instruction_Synchronization_Barrier;
 
-      SCB.SCB.CCR.IC := True;
+      SCB.CCR.IC := True;
       --  Enable instruction cache
 
       Data_Synchronization_Barrier;

@@ -10,9 +10,8 @@ pragma Ada_2022;
 
 with System.Storage_Elements;
 
+with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
 with A0B.Types;
-
-with System_ARMv7M.SCB;
 
 package body System_ARMv7M.Startup_Utilities is
 
@@ -117,13 +116,13 @@ package body System_ARMv7M.Startup_Utilities is
    ----------------
 
    procedure Enable_FPU is
-      Aux : SCB.SCB_CPACR_Register := SCB.SCB.CPACR;
+      Aux : SCB_CPACR_Register := SCB.CPACR;
 
    begin
       Aux.CP10 := 2#11#;
       Aux.CP11 := 2#11#;
 
-      SCB.SCB.CPACR := Aux;
+      SCB.CPACR := Aux;
    end Enable_FPU;
 
    ----------

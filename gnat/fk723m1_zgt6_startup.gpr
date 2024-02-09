@@ -4,7 +4,7 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
-with "a0b_base";
+with "a0b_armv7m";
 
 library project FK723M1_ZGT6_Startup is
 

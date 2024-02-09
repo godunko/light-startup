@@ -8,15 +8,16 @@
 
 with System.Storage_Elements;
 
-with STM32H723.Flash;                 use STM32H723.Flash;
-with STM32H723.PWR;                   use STM32H723.PWR;
-with STM32H723.RCC;                   use STM32H723.RCC;
+with A0B.ARMv7M.CMSIS;                use A0B.ARMv7M.CMSIS;
+with A0B.ARMv7M.Memory_Protection_Unit; use A0B.ARMv7M.Memory_Protection_Unit;
+with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
 
-with System_ARMv7M.CM7;               use System_ARMv7M.CM7;
-with System_ARMv7M.CMSIS;             use System_ARMv7M.CMSIS;
-with System_ARMv7M.MPU;               use System_ARMv7M.MPU;
-with System_ARMv7M.SCB;               use System_ARMv7M.SCB;
-with System_ARMv7M.Startup_Utilities; use System_ARMv7M.Startup_Utilities;
+with STM32H723.Flash;                   use STM32H723.Flash;
+with STM32H723.PWR;                     use STM32H723.PWR;
+with STM32H723.RCC;                     use STM32H723.RCC;
+
+with System_ARMv7M.CM7;                 use System_ARMv7M.CM7;
+with System_ARMv7M.Startup_Utilities;   use System_ARMv7M.Startup_Utilities;
 
 separate (System_ARMv7M)
 procedure System_Init is
@@ -221,9 +222,9 @@ begin
    --  to prevent speculative read access of the Cortex-M7 CPU to these
    --  regions.
 
-   MPU.MPU.MPU_RBAR.ADDR :=
+   MPU.MPU_RBAR.ADDR :=
      System.Storage_Elements.To_Address (16#0000_0000#);
-   MPU.MPU.MPU_RASR :=
+   MPU.MPU_RASR :=
      (ENABLE => True,
       SIZE   => 16#1F#,
       SRD    => 2#1000_0111#,
@@ -238,7 +239,7 @@ begin
    --  Complete configuration and enable MPU
 
    declare
-      Aux : MPU_CTRL_Register := MPU.MPU.MPU_CTRL;
+      Aux : MPU_CTRL_Register := MPU.MPU_CTRL;
 
    begin
       Aux.PRIVDEFENA := True;
@@ -248,10 +249,10 @@ begin
       Aux.ENABLE     := True;
       --  Enable MPU.
 
-      MPU.MPU.MPU_CTRL := Aux;
+      MPU.MPU_CTRL := Aux;
    end;
 
-   SCB.SCB.SHCSR.MEMFAULTENA := True;
+   SCB.SHCSR.MEMFAULTENA := True;
    --  Enable memory fault exception
 
    Data_Synchronization_Barrier;
