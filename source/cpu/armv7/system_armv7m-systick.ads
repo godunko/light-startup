@@ -8,7 +8,7 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System.Storage_Elements;
 
-with System_Types;
+with A0B.Types;
 
 package System_ARMv7M.SysTick is
 
@@ -16,9 +16,9 @@ package System_ARMv7M.SysTick is
       ENABLE         : Boolean := False;
       TICKINT        : Boolean := False;
       CLKSOURCE      : Boolean := False;
-      Reserved_3_15  : System_Types.Reserved_13;
+      Reserved_3_15  : A0B.Types.Reserved_13;
       COUNTFLAG      : Boolean := False;
-      Reserved_17_31 : System_Types.Reserved_15;
+      Reserved_17_31 : A0B.Types.Reserved_15;
    end record with Object_Size => 32;
 
    for SYST_CSR_Register use record
@@ -31,8 +31,8 @@ package System_ARMv7M.SysTick is
    end record;
 
    type SYST_RVR_Register is record
-      RELOAD         : System_Types.Unsigned_24 := 0;
-      Reserved_24_31 : System_Types.Reserved_8;
+      RELOAD         : A0B.Types.Unsigned_24 := 0;
+      Reserved_24_31 : A0B.Types.Reserved_8;
    end record with Object_Size => 32;
 
    for SYST_RVR_Register use record
@@ -41,12 +41,12 @@ package System_ARMv7M.SysTick is
    end record;
 
    type SYST_CVR_Register is record
-      CURRENT : System_Types.Unsigned_32;
+      CURRENT : A0B.Types.Unsigned_32;
    end record with Object_Size => 32;
 
    type SYST_CALIB_Register is record
-      TENMS          : System_Types.Unsigned_24;
-      Reserved_24_29 : System_Types.Reserved_6;
+      TENMS          : A0B.Types.Unsigned_24;
+      Reserved_24_29 : A0B.Types.Reserved_6;
       SKEW           : Boolean;
       NOREF          : Boolean;
    end record with Object_Size => 32;

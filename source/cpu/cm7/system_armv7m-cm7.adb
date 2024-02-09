@@ -5,16 +5,18 @@
 --
 
 pragma Restrictions (No_Elaboration_Code);
+
 pragma Ada_2022;
+
+with A0B.Types;           use A0B.Types;
 
 with System_ARMv7M.CMSIS; use System_ARMv7M.CMSIS;
 with System_ARMv7M.SCB;   use System_ARMv7M.SCB;
-with System_Types;        use System_Types;
 
 package body System_ARMv7M.CM7 is
 
    function clz
-     (Item : System_Types.Unsigned_32) return System_Types.Integer_32
+     (Item : A0B.Types.Unsigned_32) return A0B.Types.Integer_32
         with Import, Convention => Intrinsic, External_Name => "__builtin_clz";
 
    function Shift_Left
@@ -27,12 +29,12 @@ package body System_ARMv7M.CM7 is
    -------------------
 
    procedure Enable_DCache is
-      --  Ways      : System_Types.Unsigned_10;
-      --  Sets      : System_Types.Unsigned_15;
-      Ways      : System_Types.Unsigned_32;
-      Sets      : System_Types.Unsigned_32;
-      Way       : System_Types.Unsigned_32;
-      Set       : System_Types.Unsigned_32;
+      --  Ways      : A0B.Types.Unsigned_10;
+      --  Sets      : A0B.Types.Unsigned_15;
+      Ways      : A0B.Types.Unsigned_32;
+      Sets      : A0B.Types.Unsigned_32;
+      Way       : A0B.Types.Unsigned_32;
+      Set       : A0B.Types.Unsigned_32;
       Way_Shift : Natural;
       Set_Shift : Natural;
       CCSIDR    : SCB_CCSIDR_Register;

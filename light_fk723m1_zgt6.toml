@@ -1,6 +1,6 @@
 name = "light_fk723m1_zgt6"
 description = "FK723M1-ZGT6 Board Support Package for `light` GNAT Runtime"
-version = "0.1.0"
+version = "0.2.0"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
@@ -16,3 +16,4 @@ disabled = true
 
 [[depends-on]]
 gnat_arm_elf = "*"
+a0b_base = "*"

@@ -8,7 +8,7 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System.Storage_Elements;
 
-with System_Types;
+with A0B.Types;
 
 package System_ARMv7M.MPU is
 
@@ -16,7 +16,7 @@ package System_ARMv7M.MPU is
       ENABLE        : Boolean;
       HFNMIENA      : Boolean;
       PRIVDEFENA    : Boolean;
-      Reserved_3_31 : System_Types.Reserved_29;
+      Reserved_3_31 : A0B.Types.Reserved_29;
    end record with Object_Size => 32;
 
    for MPU_CTRL_Register use record
@@ -27,7 +27,7 @@ package System_ARMv7M.MPU is
    end record;
 
    type MPU_RBAR_Register is record
-      --  REGION : System_Types.Unsigned_4;
+      --  REGION : A0B.Types.Unsigned_4;
       --  VALID  : Boolean;
       ADDR : System.Address;
    end record with Object_Size => 32;
@@ -40,18 +40,18 @@ package System_ARMv7M.MPU is
 
    type MPU_RASR_Register is record
       ENABLE         : Boolean;
-      SIZE           : System_Types.Unsigned_5;
-      Reserved_6_7   : System_Types.Reserved_2;
-      SRD            : System_Types.Unsigned_8;  --  array of Boolean?
+      SIZE           : A0B.Types.Unsigned_5;
+      Reserved_6_7   : A0B.Types.Reserved_2;
+      SRD            : A0B.Types.Unsigned_8;  --  array of Boolean?
       B              : Boolean;
       C              : Boolean;
       S              : Boolean;
-      TEX            : System_Types.Unsigned_3;
-      Reserved_22_23 : System_Types.Reserved_2;
-      AP             : System_Types.Unsigned_3;
-      Reserved_27    : System_Types.Reserved_1;
+      TEX            : A0B.Types.Unsigned_3;
+      Reserved_22_23 : A0B.Types.Reserved_2;
+      AP             : A0B.Types.Unsigned_3;
+      Reserved_27    : A0B.Types.Reserved_1;
       XN             : Boolean;
-      Reserved_29_31 : System_Types.Reserved_3;
+      Reserved_29_31 : A0B.Types.Reserved_3;
    end record with Object_Size => 32;
 
    for MPU_RASR_Register use record
@@ -71,17 +71,17 @@ package System_ARMv7M.MPU is
    end record;
 
    type MPU_Registers is record
-      MPU_TYPE    : System_Types.Unsigned_32;
+      MPU_TYPE    : A0B.Types.Unsigned_32;
       MPU_CTRL    : MPU_CTRL_Register with Volatile_Full_Access;
-      MPU_RNR     : System_Types.Unsigned_32;
+      MPU_RNR     : A0B.Types.Unsigned_32;
       MPU_RBAR    : MPU_RBAR_Register with Volatile_Full_Access;
       MPU_RASR    : MPU_RASR_Register with Volatile_Full_Access;
-      MPU_RBAR_A1 : System_Types.Unsigned_32;
-      MPU_RASR_A1 : System_Types.Unsigned_32;
-      MPU_RBAR_A2 : System_Types.Unsigned_32;
-      MPU_RASR_A2 : System_Types.Unsigned_32;
-      MPU_RBAR_A3 : System_Types.Unsigned_32;
-      MPU_RASR_A3 : System_Types.Unsigned_32;
+      MPU_RBAR_A1 : A0B.Types.Unsigned_32;
+      MPU_RASR_A1 : A0B.Types.Unsigned_32;
+      MPU_RBAR_A2 : A0B.Types.Unsigned_32;
+      MPU_RASR_A2 : A0B.Types.Unsigned_32;
+      MPU_RBAR_A3 : A0B.Types.Unsigned_32;
+      MPU_RASR_A3 : A0B.Types.Unsigned_32;
    end record;
 
    for MPU_Registers use record

@@ -5,13 +5,14 @@
 --
 
 pragma Restrictions (No_Elaboration_Code);
+
 pragma Ada_2022;
 
-with Interfaces;
 with System.Storage_Elements;
 
+with A0B.Types;
+
 with System_ARMv7M.SCB;
-with System_Types;
 
 package body System_ARMv7M.Startup_Utilities is
 
@@ -46,18 +47,18 @@ package body System_ARMv7M.Startup_Utilities is
       if Source_Address /= Destination_Address then
          while Destination_Address /= End_Address loop
             declare
-               Source      : constant Interfaces.Unsigned_32
+               Source      : constant A0B.Types.Unsigned_32
                  with Import, Address => Source_Address;
-               Destination : Interfaces.Unsigned_32
+               Destination : A0B.Types.Unsigned_32
                  with Import, Address => Destination_Address;
 
             begin
                Destination         := Source;
 
                Source_Address      :=
-                 @ + Interfaces.Unsigned_32'Max_Size_In_Storage_Elements;
+                 @ + A0B.Types.Unsigned_32'Max_Size_In_Storage_Elements;
                Destination_Address :=
-                 @ + Interfaces.Unsigned_32'Max_Size_In_Storage_Elements;
+                 @ + A0B.Types.Unsigned_32'Max_Size_In_Storage_Elements;
             end;
          end loop;
       end if;
@@ -84,11 +85,11 @@ package body System_ARMv7M.Startup_Utilities is
    ----------------------------
 
    procedure Copy_DTCM_Data_Section is
-      siitcmtext : constant System_Types.Unsigned_32
+      siitcmtext : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_siitcmtext";
-      sitcmtext  : constant System_Types.Unsigned_32
+      sitcmtext  : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sitcmtext";
-      eitcmtext  : constant System_Types.Unsigned_32
+      eitcmtext  : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_eitcmtext";
 
    begin
@@ -100,11 +101,11 @@ package body System_ARMv7M.Startup_Utilities is
    ----------------------------
 
    procedure Copy_ITCM_Text_Section is
-      sidtcmdata : constant System_Types.Unsigned_32
+      sidtcmdata : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sidtcmdata";
-      sdtcmdata  : constant System_Types.Unsigned_32
+      sdtcmdata  : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sdtcmdata";
-      edtcmdata  : constant System_Types.Unsigned_32
+      edtcmdata  : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_edtcmdata";
 
    begin
@@ -142,14 +143,14 @@ package body System_ARMv7M.Startup_Utilities is
    begin
       while Destination_Address /= End_Address loop
          declare
-            Destination : Interfaces.Unsigned_32
+            Destination : A0B.Types.Unsigned_32
               with Import, Address => Destination_Address;
 
          begin
             Destination         := 0;
 
             Destination_Address :=
-              @ + Interfaces.Unsigned_32'Max_Size_In_Storage_Elements;
+              @ + A0B.Types.Unsigned_32'Max_Size_In_Storage_Elements;
          end;
       end loop;
    end Fill;
@@ -159,9 +160,9 @@ package body System_ARMv7M.Startup_Utilities is
    ----------------------
 
    procedure Fill_BSS_Section is
-      sbss : constant System_Types.Unsigned_32
+      sbss : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sbss";
-      ebss : constant System_Types.Unsigned_32
+      ebss : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_ebss";
 
    begin
@@ -173,9 +174,9 @@ package body System_ARMv7M.Startup_Utilities is
    ---------------------------
 
    procedure Fill_DTCM_BSS_Section is
-      sdtcmbss : constant System_Types.Unsigned_32
+      sdtcmbss : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sdtcmbss";
-      edtcmbss : constant System_Types.Unsigned_32
+      edtcmbss : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_edtcmbss";
 
    begin

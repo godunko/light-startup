@@ -4,6 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+with "a0b_base";
+
 library project Arduino_Due_Startup is
 
    for Target use "arm-eabi";

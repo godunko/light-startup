@@ -8,24 +8,24 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System.Storage_Elements;
 
-with System_Types;
+with A0B.Types;
 
 package System_ARMv7M.SCB is
 
    type SCB_CCR_Register is record
       NONBASETHRDENA : Boolean;
       USERSETMPEND   : Boolean;
-      Reserved_2_2   : System_Types.Reserved_1;
+      Reserved_2_2   : A0B.Types.Reserved_1;
       UNALIGN_TRP    : Boolean;
       DIV_0_TRP      : Boolean;
-      Reserved_5_7   : System_Types.Reserved_3;
+      Reserved_5_7   : A0B.Types.Reserved_3;
       BFHFNMIGN      : Boolean;
       STKALIGN       : Boolean;
-      Reserved_10_15 : System_Types.Reserved_6;
+      Reserved_10_15 : A0B.Types.Reserved_6;
       DC             : Boolean;
       IC             : Boolean;
       BP             : Boolean;
-      Reserved_19_31 : System_Types.Reserved_13;
+      Reserved_19_31 : A0B.Types.Reserved_13;
    end record with Object_Size => 32;
 
    for SCB_CCR_Register use record
@@ -45,9 +45,9 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_CCSIDR_Register is record
-      LineSize      : System_Types.Unsigned_3;
-      Associativity : System_Types.Unsigned_10;
-      NumSets       : System_Types.Unsigned_15;
+      LineSize      : A0B.Types.Unsigned_3;
+      Associativity : A0B.Types.Unsigned_10;
+      NumSets       : A0B.Types.Unsigned_15;
       WA            : Boolean;
       RA            : Boolean;
       WB            : Boolean;
@@ -66,8 +66,8 @@ package System_ARMv7M.SCB is
 
    type SCB_CSSELR_Register is record
       InD           : Boolean;
-      Level         : System_Types.Unsigned_3;
-      Reserved_4_31 : System_Types.Reserved_28;
+      Level         : A0B.Types.Unsigned_3;
+      Reserved_4_31 : A0B.Types.Reserved_28;
    end record with Object_Size => 32;
 
    for SCB_CSSELR_Register use record
@@ -77,18 +77,18 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_CPACR_Register is record
-      CP0            : System_Types.Unsigned_2 := 0;
-      CP1            : System_Types.Unsigned_2 := 0;
-      CP2            : System_Types.Unsigned_2 := 0;
-      CP3            : System_Types.Unsigned_2 := 0;
-      CP4            : System_Types.Unsigned_2 := 0;
-      CP5            : System_Types.Unsigned_2 := 0;
-      CP6            : System_Types.Unsigned_2 := 0;
-      CP7            : System_Types.Unsigned_2 := 0;
-      Reserved_16_19 : System_Types.Reserved_4;
-      CP10           : System_Types.Unsigned_2 := 0;
-      CP11           : System_Types.Unsigned_2 := 0;
-      Reserved_24_31 : System_Types.Reserved_8;
+      CP0            : A0B.Types.Unsigned_2 := 0;
+      CP1            : A0B.Types.Unsigned_2 := 0;
+      CP2            : A0B.Types.Unsigned_2 := 0;
+      CP3            : A0B.Types.Unsigned_2 := 0;
+      CP4            : A0B.Types.Unsigned_2 := 0;
+      CP5            : A0B.Types.Unsigned_2 := 0;
+      CP6            : A0B.Types.Unsigned_2 := 0;
+      CP7            : A0B.Types.Unsigned_2 := 0;
+      Reserved_16_19 : A0B.Types.Reserved_4;
+      CP10           : A0B.Types.Unsigned_2 := 0;
+      CP11           : A0B.Types.Unsigned_2 := 0;
+      Reserved_24_31 : A0B.Types.Reserved_8;
    end record with Object_Size => 32;
 
    for SCB_CPACR_Register use record
@@ -109,12 +109,12 @@ package System_ARMv7M.SCB is
    type SCB_SHCSR_Register is record
       MEMFAULTACT    : Boolean;
       BUSFAULTACT    : Boolean;
-      Reserved_2     : System_Types.Reserved_1;
+      Reserved_2     : A0B.Types.Reserved_1;
       USGFAULTACT    : Boolean;
-      Reserved_4_6   : System_Types.Reserved_3;
+      Reserved_4_6   : A0B.Types.Reserved_3;
       SVCALLACT      : Boolean;
       MONITORACT     : Boolean;
-      Reserved_9     : System_Types.Reserved_1;
+      Reserved_9     : A0B.Types.Reserved_1;
       PENDSVACT      : Boolean;
       SYSTICKACT     : Boolean;
       USGFAULTPENDED : Boolean;
@@ -124,7 +124,7 @@ package System_ARMv7M.SCB is
       MEMFAULTENA    : Boolean;
       BUSFAULTENA    : Boolean;
       USGFAULTENA    : Boolean;
-      Reserved_19_31 : System_Types.Reserved_13;
+      Reserved_19_31 : A0B.Types.Reserved_13;
    end record with Object_Size => 32;
 
    for SCB_SHCSR_Register use record
@@ -149,41 +149,41 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_Registers is record
-      CPUID    : System_Types.Reserved_32;
-      ICSR     : System_Types.Reserved_32;
-      VTOR     : System_Types.Reserved_32;
-      AIRCR    : System_Types.Reserved_32;
-      SCR      : System_Types.Reserved_32;
+      CPUID    : A0B.Types.Reserved_32;
+      ICSR     : A0B.Types.Reserved_32;
+      VTOR     : A0B.Types.Reserved_32;
+      AIRCR    : A0B.Types.Reserved_32;
+      SCR      : A0B.Types.Reserved_32;
       CCR      : SCB_CCR_Register    with Volatile_Full_Access;
-      SHPR1    : System_Types.Reserved_32;
-      SHPR2    : System_Types.Reserved_32;
-      SHPR3    : System_Types.Reserved_32;
+      SHPR1    : A0B.Types.Reserved_32;
+      SHPR2    : A0B.Types.Reserved_32;
+      SHPR3    : A0B.Types.Reserved_32;
       SHCSR    : SCB_SHCSR_Register  with Volatile_Full_Access;
-      CFSR     : System_Types.Reserved_32;
-      HFSR     : System_Types.Reserved_32;
-      DFSR     : System_Types.Reserved_32;
-      MMFAR    : System_Types.Reserved_32;
-      BFAR     : System_Types.Reserved_32;
-      AFSR     : System_Types.Reserved_32;
+      CFSR     : A0B.Types.Reserved_32;
+      HFSR     : A0B.Types.Reserved_32;
+      DFSR     : A0B.Types.Reserved_32;
+      MMFAR    : A0B.Types.Reserved_32;
+      BFAR     : A0B.Types.Reserved_32;
+      AFSR     : A0B.Types.Reserved_32;
 
       -- ARMv7-M CPUID subblock begin
 
-      ID_PFR0  : System_Types.Reserved_32;
-      ID_PFR1  : System_Types.Reserved_32;
-      ID_DFR0  : System_Types.Reserved_32;
-      ID_AFR0  : System_Types.Reserved_32;
-      ID_MMFR0 : System_Types.Reserved_32;
-      ID_MMFR1 : System_Types.Reserved_32;
-      ID_MMFR2 : System_Types.Reserved_32;
-      ID_MMFR3 : System_Types.Reserved_32;
-      ID_ISAR0 : System_Types.Reserved_32;
-      ID_ISAR1 : System_Types.Reserved_32;
-      ID_ISAR2 : System_Types.Reserved_32;
-      ID_ISAR3 : System_Types.Reserved_32;
-      ID_ISAR4 : System_Types.Reserved_32;
-      ID_ISAR5 : System_Types.Reserved_32;
-      CLIDR    : System_Types.Reserved_32;
-      CTR      : System_Types.Reserved_32;
+      ID_PFR0  : A0B.Types.Reserved_32;
+      ID_PFR1  : A0B.Types.Reserved_32;
+      ID_DFR0  : A0B.Types.Reserved_32;
+      ID_AFR0  : A0B.Types.Reserved_32;
+      ID_MMFR0 : A0B.Types.Reserved_32;
+      ID_MMFR1 : A0B.Types.Reserved_32;
+      ID_MMFR2 : A0B.Types.Reserved_32;
+      ID_MMFR3 : A0B.Types.Reserved_32;
+      ID_ISAR0 : A0B.Types.Reserved_32;
+      ID_ISAR1 : A0B.Types.Reserved_32;
+      ID_ISAR2 : A0B.Types.Reserved_32;
+      ID_ISAR3 : A0B.Types.Reserved_32;
+      ID_ISAR4 : A0B.Types.Reserved_32;
+      ID_ISAR5 : A0B.Types.Reserved_32;
+      CLIDR    : A0B.Types.Reserved_32;
+      CTR      : A0B.Types.Reserved_32;
       CCSIDR   : SCB_CCSIDR_Register with Volatile_Full_Access;
       CSSELR   : SCB_CSSELR_Register with Volatile_Full_Access;
 
@@ -231,14 +231,14 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_MVFR0_Register is record
-      A_SIMD                : System_Types.Unsigned_4;
-      Single_Precision      : System_Types.Unsigned_4;
-      Double_Precision      : System_Types.Unsigned_4;
-      FP_Exception_Trapping : System_Types.Unsigned_4;
-      Divide                : System_Types.Unsigned_4;
-      Square_Root           : System_Types.Unsigned_4;
-      Short_Vectors         : System_Types.Unsigned_4;
-      FP_Rounding_Modes     : System_Types.Unsigned_4;
+      A_SIMD                : A0B.Types.Unsigned_4;
+      Single_Precision      : A0B.Types.Unsigned_4;
+      Double_Precision      : A0B.Types.Unsigned_4;
+      FP_Exception_Trapping : A0B.Types.Unsigned_4;
+      Divide                : A0B.Types.Unsigned_4;
+      Square_Root           : A0B.Types.Unsigned_4;
+      Short_Vectors         : A0B.Types.Unsigned_4;
+      FP_Rounding_Modes     : A0B.Types.Unsigned_4;
    end record with Object_Size => 32;
 
    for SCB_MVFR0_Register use record
@@ -253,12 +253,12 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_FP_Registers is record
-      FPCCR  : System_Types.Reserved_32;
-      FPCAR  : System_Types.Reserved_32;
-      FPDSCR : System_Types.Reserved_32;
+      FPCCR  : A0B.Types.Reserved_32;
+      FPCAR  : A0B.Types.Reserved_32;
+      FPDSCR : A0B.Types.Reserved_32;
       MVFR0  : SCB_MVFR0_Register with Volatile_Full_Access;
-      MVFR1  : System_Types.Reserved_32;
-      MVFR2  : System_Types.Reserved_32;
+      MVFR1  : A0B.Types.Reserved_32;
+      MVFR2  : A0B.Types.Reserved_32;
    end record;
 
    for SCB_FP_Registers use record
@@ -271,9 +271,9 @@ package System_ARMv7M.SCB is
    end record;
 
    type SCB_Cache_Registers is record
-      ICIALLU : System_Types.Unsigned_32 with Volatile_Full_Access;
+      ICIALLU : A0B.Types.Unsigned_32 with Volatile_Full_Access;
     --    ICIMVAU
-      DCISW   : System_Types.Unsigned_32 with Volatile_Full_Access;
+      DCISW   : A0B.Types.Unsigned_32 with Volatile_Full_Access;
       --  This register has "dynamic" strusture.
    end record;
 
