@@ -6,8 +6,8 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with ATSAM3X8E.EFC; use ATSAM3X8E.EFC;
-with ATSAM3X8E.PMC; use ATSAM3X8E.PMC;
+with A0B.SVD.ATSAM3X8E.EFC; use A0B.SVD.ATSAM3X8E.EFC;
+with A0B.SVD.ATSAM3X8E.PMC; use A0B.SVD.ATSAM3X8E.PMC;
 
 package body System_ATSAM3X8E.Startup_Utilities is
 
@@ -48,16 +48,15 @@ package body System_ATSAM3X8E.Startup_Utilities is
 
       if not PMC_Periph.CKGR_MOR.MOSCSEL then
          declare
-            Aux : CKGR_MOR_Register_Value :=
-              CKGR_MOR_Register_Value (PMC_Periph.CKGR_MOR);
+            Aux : CKGR_MOR_Register := PMC_Periph.CKGR_MOR;
 
          begin
-            Aux.KEY      := ATSAM3X8E.PMC.PASSWD;
+            Aux.KEY      := A0B.SVD.ATSAM3X8E.PMC.PASSWD;
             Aux.MOSCXTEN := True;
             Aux.MOSCXTBY := False;
             Aux.MOSCXTST := Oscillator_Startup_Count;
 
-            PMC_Periph.CKGR_MOR := CKGR_MOR_Register (Aux);
+            PMC_Periph.CKGR_MOR := Aux;
          end;
 
          while not PMC_Periph.PMC_SR.MOSCXTS loop
@@ -69,14 +68,13 @@ package body System_ATSAM3X8E.Startup_Utilities is
       --  operation is completed.
 
       declare
-         Aux : CKGR_MOR_Register_Value :=
-           CKGR_MOR_Register_Value (PMC_Periph.CKGR_MOR);
+         Aux : CKGR_MOR_Register := PMC_Periph.CKGR_MOR;
 
       begin
-         Aux.KEY     := ATSAM3X8E.PMC.PASSWD;
+         Aux.KEY     := A0B.SVD.ATSAM3X8E.PMC.PASSWD;
          Aux.MOSCSEL := True;
 
-         PMC_Periph.CKGR_MOR := CKGR_MOR_Register (Aux);
+         PMC_Periph.CKGR_MOR := Aux;
       end;
 
       while not PMC_Periph.PMC_SR.MOSCSELS loop

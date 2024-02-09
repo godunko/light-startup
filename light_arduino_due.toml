@@ -18,3 +18,4 @@ disabled = true
 gnat_arm_elf = "*"
 a0b_base = "*"
 a0b_armv7m = "*"
+a0b_svd_atsam3x8e = "*"

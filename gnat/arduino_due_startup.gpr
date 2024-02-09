@@ -5,6 +5,7 @@
 --
 
 with "a0b_armv7m";
+with "a0b_svd_atsam3x8e";
 
 library project Arduino_Due_Startup is
 
