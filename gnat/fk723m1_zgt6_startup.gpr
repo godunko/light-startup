@@ -10,7 +10,7 @@ with "a0b_svd_stm32h723";
 library project FK723M1_ZGT6_Startup is
 
    for Target use "arm-eabi";
-   for Runtime ("Ada") use "light-cortex-m7df";
+   for Runtime ("Ada") use "light-cortex-m7f";
 
    for Library_Name use "fk723m1zgt6";
    for Library_Dir use "../.libs";
