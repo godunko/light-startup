@@ -14,6 +14,9 @@ project-files=["gnat/fk723m1_zgt6_startup.gpr"]
 [configuration]
 disabled = true
 
+[configuration.values]
+a0b_armv7m.fpu_extension = "VFPv5"
+
 [[depends-on]]
 gnat_arm_elf = "*"
 a0b_base = "*"

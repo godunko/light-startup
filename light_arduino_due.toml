@@ -14,6 +14,9 @@ tags = ["embedded", "bsp", "light", "sam3x8e", "arduino", "due"]
 [configuration]
 disabled = true
 
+[configuration.values]
+a0b_armv7m.fpu_extension = "none"
+
 [[depends-on]]
 gnat_arm_elf = "*"
 a0b_base = "*"
