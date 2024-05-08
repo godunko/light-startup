@@ -1,0 +1,24 @@
+name = "light_stm32f4disco"
+description = "STM32F4DISCOVERY Board Support Package for `light` GNAT Runtime"
+version = "0.1.0"
+
+authors = ["Yuri Veretelnikov"]
+maintainers = ["Yuri Veretelnnikov <yuri.veretelnikov@gmail.com>"]
+maintainers-logins = ["meowthsli"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+
+project-files=["gnat/stm32f4disco_startup.gpr"]
+
+tags = ["embedded", "bsp", "light", "stm32", "stm32f4", "disco", "discovery", "stm32f4disco"]
+
+[configuration]
+disabled = true
+
+[configuration.values]
+a0b_armv7m.fpu_extension = "VFPv4"
+
+[[depends-on]]
+gnat_arm_elf = "*"
+a0b_base = "*"
+a0b_armv7m = "*"
+a0b_svd_stm32f407 = "*"

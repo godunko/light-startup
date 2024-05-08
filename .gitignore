@@ -2,3 +2,4 @@ alire
 .libs
 .objs
 .vscode
+alire.toml

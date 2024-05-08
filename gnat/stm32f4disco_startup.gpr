@@ -1,0 +1,43 @@
+--
+--  Copyright (C) 2024, Yuri Veretelnikov <yuri.veretelnikov@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+with "a0b_armv7m";
+with "a0b_svd_stm32f407";
+
+library project STM32F4DISCO_Startup is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "light-cortex-m4";
+
+   for Library_Name use "stm32f4disco";
+   for Library_Dir use "../.libs";
+
+   for Object_Dir use "../.objs";
+   for Source_Dirs use
+     ("../source/board/stm32f4disco",
+      "../source/mcu/stm32f407",
+      "../source/cpu/armv7");
+
+   Linker_Switches :=
+     (
+        "-Wl,--undefined=__light_exceptions_vector",
+        "-Wl,--undefined=__light_interrupts_vector",
+        "-L", Project'Project_Dir & "../source/ld",
+        "-T", "stm32f407vg-flash.ld"
+     );
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g",
+         "-O2",
+         "-ffunction-sections",
+         "-fdata-sections",
+         "-mcpu=cortex-m4",
+         "-mfloat-abi=softfp",
+         "-mfpu=fpv4-sp-d16");
+   end Compiler;
+
+end STM32F4DISCO_Startup;
