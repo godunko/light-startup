@@ -29,7 +29,8 @@ procedure System_Init is
    VOS0    : constant := 0;  --  Voltage scale, maximum performance.
    Latency : constant := 7;
    DIVM1   : constant := 5;
-   MULN1   : constant := 104;
+   MULN1   : constant := 104 - 1;
+   DIVP1   : constant := 1 - 1;
    RGE1    : constant := 2;
 
    procedure Configure_Power_Supply_LDO;
@@ -99,7 +100,7 @@ procedure System_Init is
 
       begin
          Aux.DIVN1  := MULN1;
-         Aux.DIVP1  := 0;
+         Aux.DIVP1  := DIVP1;
          Aux.DIVQ1  := 0;
          Aux.DIVR1  := 0;
 
