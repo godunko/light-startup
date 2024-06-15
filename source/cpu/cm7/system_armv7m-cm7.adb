@@ -11,17 +11,11 @@ pragma Ada_2022;
 with A0B.ARMv7M.CMSIS;                use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
 with A0B.Types;                       use A0B.Types;
+with A0B.Types.GCC_Builtins;          use A0B.Types.GCC_Builtins;
 
 package body System_ARMv7M.CM7 is
 
-   function clz
-     (Item : A0B.Types.Unsigned_32) return A0B.Types.Integer_32
-        with Import, Convention => Intrinsic, External_Name => "__builtin_clz";
-
-   function Shift_Left
-     (Value  : Unsigned_32;
-      Amount : Natural) return Unsigned_32
-      with Import, Convention => Intrinsic;
+   use type A0B.Types.Unsigned_32;
 
    -------------------
    -- Enable_DCache --

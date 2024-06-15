@@ -6,8 +6,8 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-with A0B.SVD.ATSAM3X8E.EFC; use A0B.SVD.ATSAM3X8E.EFC;
-with A0B.SVD.ATSAM3X8E.PMC; use A0B.SVD.ATSAM3X8E.PMC;
+with A0B.ATSAM3X8E.SVD.EFC; use A0B.ATSAM3X8E.SVD.EFC;
+with A0B.ATSAM3X8E.SVD.PMC; use A0B.ATSAM3X8E.SVD.PMC;
 
 package body System_ATSAM3X8E.Startup_Utilities is
 
@@ -51,7 +51,7 @@ package body System_ATSAM3X8E.Startup_Utilities is
             Aux : CKGR_MOR_Register := PMC_Periph.CKGR_MOR;
 
          begin
-            Aux.KEY      := A0B.SVD.ATSAM3X8E.PMC.PASSWD;
+            Aux.KEY      := A0B.ATSAM3X8E.SVD.PMC.PASSWD;
             Aux.MOSCXTEN := True;
             Aux.MOSCXTBY := False;
             Aux.MOSCXTST := Oscillator_Startup_Count;
@@ -71,7 +71,7 @@ package body System_ATSAM3X8E.Startup_Utilities is
          Aux : CKGR_MOR_Register := PMC_Periph.CKGR_MOR;
 
       begin
-         Aux.KEY     := A0B.SVD.ATSAM3X8E.PMC.PASSWD;
+         Aux.KEY     := A0B.ATSAM3X8E.SVD.PMC.PASSWD;
          Aux.MOSCSEL := True;
 
          PMC_Periph.CKGR_MOR := Aux;

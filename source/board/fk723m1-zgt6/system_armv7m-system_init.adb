@@ -11,9 +11,9 @@ with System.Storage_Elements;
 with A0B.ARMv7M.CMSIS;                  use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.Memory_Protection_Unit; use A0B.ARMv7M.Memory_Protection_Unit;
 with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
-with A0B.SVD.STM32H723.Flash;           use A0B.SVD.STM32H723.Flash;
-with A0B.SVD.STM32H723.PWR;             use A0B.SVD.STM32H723.PWR;
-with A0B.SVD.STM32H723.RCC;             use A0B.SVD.STM32H723.RCC;
+with A0B.STM32H723.SVD.Flash;           use A0B.STM32H723.SVD.Flash;
+with A0B.STM32H723.SVD.PWR;             use A0B.STM32H723.SVD.PWR;
+with A0B.STM32H723.SVD.RCC;             use A0B.STM32H723.SVD.RCC;
 
 with System_ARMv7M.CM7;                 use System_ARMv7M.CM7;
 with System_ARMv7M.Startup_Utilities;   use System_ARMv7M.Startup_Utilities;
@@ -51,7 +51,7 @@ procedure System_Init is
       --  Set HSE configuration: crystal oscillator
 
       declare
-         Aux : A0B.SVD.STM32H723.RCC.CR_Register := RCC_Periph.CR;
+         Aux : A0B.STM32H723.SVD.RCC.CR_Register := RCC_Periph.CR;
 
       begin
          Aux.HSEON  := True;
