@@ -5,7 +5,7 @@
 --
 
 with "a0b_armv7m";
-with "a0b_svd_stm32f407";
+with "a0b_stm32f407";
 
 library project STM32F4DISCO_Startup is
 

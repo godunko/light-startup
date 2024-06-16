@@ -7,9 +7,9 @@
 --  stm32f407
 with A0B.ARMv7M.CMSIS;                  use A0B.ARMv7M.CMSIS;
 with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
-with A0B.SVD.STM32F407.Flash;           use A0B.SVD.STM32F407.Flash;
-with A0B.SVD.STM32F407.PWR;             use A0B.SVD.STM32F407.PWR;
-with A0B.SVD.STM32F407.RCC;             use A0B.SVD.STM32F407.RCC;
+with A0B.STM32F407.SVD.Flash;           use A0B.STM32F407.SVD.Flash;
+with A0B.STM32F407.SVD.PWR;             use A0B.STM32F407.SVD.PWR;
+with A0B.STM32F407.SVD.RCC;             use A0B.STM32F407.SVD.RCC;
 
 with System_ARMv7M.Startup_Utilities;   use System_ARMv7M.Startup_Utilities;
 with A0B.Types;
@@ -28,7 +28,7 @@ procedure System_Init is
    begin
       --  Set HSE configuration: crystal oscillator
       declare
-         Val : A0B.SVD.STM32F407.RCC.CR_Register := RCC_Periph.CR;
+         Val : A0B.STM32F407.SVD.RCC.CR_Register := RCC_Periph.CR;
       begin
          Val.HSEON  := True;
          RCC_Periph.CR := Val;
