@@ -10,7 +10,7 @@ with "a0b_stm32f407";
 library project STM32F4DISCO_Startup is
 
    for Target use "arm-eabi";
-   for Runtime ("Ada") use "light-cortex-m4";
+   for Runtime ("Ada") use "light-cortex-m4f";
 
    for Library_Name use "stm32f4disco";
    for Library_Dir use "../.libs";
