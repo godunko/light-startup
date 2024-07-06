@@ -23,4 +23,39 @@ REGION_ALIAS("DEFAULT_IDATA",   flash);  /* info to initialize DEFAULT_DATA */
 REGION_ALIAS("DEFAULT_BSS",     ram);
 REGION_ALIAS("DEFAULT_STACK",   ram);
 
+REGION_ALIAS ("DTCM_DATA", ccm);
+REGION_ALIAS ("DTCM_IDATA", flash);
+REGION_ALIAS ("DTCM_BSS", ccm);
+
+/* STM32F407 can't fetch instructions from the CCM */
+
+SECTIONS
+{
+    .dtcm.data : ALIGN(4) /* Ensure that the start of the section is word aligned */
+    {
+        _sdtcmdata = .;   /* Global symbol at DTCM data start */
+
+        *(.dtcm.data .dtcm.data.*)
+
+        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
+        _edtcmdata = .;   /* Global symbol at DTCM data end */
+    } > DTCM_DATA AT > DTCM_IDATA
+    _sidtcmdata = LOADADDR(.dtcm.data);
+}
+INSERT AFTER .data;
+
+SECTIONS
+{
+    .dctm.bss (NOLOAD) : ALIGN(4)  /* Ensure that the start of the section is word aligned */
+    {
+        _sdtcmbss = .;        /* Global symbol at DTCM bss start */
+
+        *(.dtcm.bss .dtcm.bss.*)
+
+        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
+        _edtcmbss = .;        /* Global symbol at DTCM bss end */
+    } > DTCM_BSS
+}
+INSERT AFTER .bss;
+
 INCLUDE armv7.ld

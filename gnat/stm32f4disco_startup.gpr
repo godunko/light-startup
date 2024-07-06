@@ -19,6 +19,7 @@ library project STM32F4DISCO_Startup is
    for Source_Dirs use
      ("../source/board/stm32f4disco",
       "../source/mcu/stm32f407",
+      "../source/cpu/cm4",
       "../source/cpu/armv7");
 
    Linker_Switches :=
