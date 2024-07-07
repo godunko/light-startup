@@ -84,22 +84,6 @@ package body System_ARMv7M.Startup_Utilities is
    ----------------------------
 
    procedure Copy_DTCM_Data_Section is
-      siitcmtext : constant A0B.Types.Unsigned_32
-        with Import, Convention => C, External_Name => "_siitcmtext";
-      sitcmtext  : constant A0B.Types.Unsigned_32
-        with Import, Convention => C, External_Name => "_sitcmtext";
-      eitcmtext  : constant A0B.Types.Unsigned_32
-        with Import, Convention => C, External_Name => "_eitcmtext";
-
-   begin
-      Copy (sitcmtext'Address, eitcmtext'Address, siitcmtext'Address);
-   end Copy_DTCM_Data_Section;
-
-   ----------------------------
-   -- Copy_ITCM_Text_Section --
-   ----------------------------
-
-   procedure Copy_ITCM_Text_Section is
       sidtcmdata : constant A0B.Types.Unsigned_32
         with Import, Convention => C, External_Name => "_sidtcmdata";
       sdtcmdata  : constant A0B.Types.Unsigned_32
@@ -109,6 +93,22 @@ package body System_ARMv7M.Startup_Utilities is
 
    begin
       Copy (sdtcmdata'Address, edtcmdata'Address, sidtcmdata'Address);
+   end Copy_DTCM_Data_Section;
+
+   ----------------------------
+   -- Copy_ITCM_Text_Section --
+   ----------------------------
+
+   procedure Copy_ITCM_Text_Section is
+      siitcmtext : constant A0B.Types.Unsigned_32
+        with Import, Convention => C, External_Name => "_siitcmtext";
+      sitcmtext  : constant A0B.Types.Unsigned_32
+        with Import, Convention => C, External_Name => "_sitcmtext";
+      eitcmtext  : constant A0B.Types.Unsigned_32
+        with Import, Convention => C, External_Name => "_eitcmtext";
+
+   begin
+      Copy (sitcmtext'Address, eitcmtext'Address, siitcmtext'Address);
    end Copy_ITCM_Text_Section;
 
    ----------------
