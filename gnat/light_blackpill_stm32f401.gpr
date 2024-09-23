@@ -1,0 +1,41 @@
+--
+--  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+with "a0b_armv7m";
+with "a0b_stm32f401";
+
+library project Light_Blackpill_STM32F401 is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "light-cortex-m4f";
+
+   for Library_Name use "lightblackpillstm32f401";
+   for Library_Dir use "../.libs/blackpillstm32f401";
+
+   for Object_Dir use "../.objs/blackpillstm32f401";
+   for Source_Dirs use
+     ("../source/board/blackpill_stm32f401",
+      "../source/mcu/stm32f401",
+      "../source/cpu/cm4",
+      "../source/cpu/armv7");
+
+   Linker_Switches :=
+     (
+        "-Wl,--undefined=__light_exceptions_vector",
+        "-Wl,--undefined=__light_interrupts_vector",
+        "-L", Project'Project_Dir & "../source/ld",
+        "-T", "stm32f401cd-flash.ld"
+     );
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g",
+         "-O2",
+         "-ffunction-sections",
+         "-fdata-sections");
+   end Compiler;
+
+end Light_Blackpill_STM32F401;
