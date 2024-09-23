@@ -7,15 +7,15 @@
 with "a0b_armv7m";
 with "a0b_stm32h723";
 
-library project FK723M1_ZGT6_Startup is
+library project Light_FK723M1_ZGT6 is
 
    for Target use "arm-eabi";
-   for Runtime ("Ada") use "light-cortex-m7f";
+   for Runtime ("Ada") use "light-cortex-m7df";
 
-   for Library_Name use "fk723m1zgt6";
-   for Library_Dir use "../.libs";
+   for Library_Name use "lightfk723m1zgt6";
+   for Library_Dir use "../.libs/fk723m1_zgt6";
 
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/fk723m1_zgt6";
    for Source_Dirs use
      ("../source/board/fk723m1-zgt6",
       "../source/mcu/stm32h723",
@@ -38,4 +38,4 @@ library project FK723M1_ZGT6_Startup is
          "-fdata-sections");
    end Compiler;
 
-end FK723M1_ZGT6_Startup;
+end Light_FK723M1_ZGT6;

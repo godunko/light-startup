@@ -1,6 +1,6 @@
 name = "light_fk723m1_zgt6"
 description = "FK723M1-ZGT6 Board Support Package for `light` GNAT Runtime"
-version = "0.2.0"
+version = "0.2.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
@@ -9,7 +9,7 @@ licenses = "Apache-2.0 WITH LLVM-exception"
 
 tags = ["a0b", "embedded", "bsp", "light", "stm32h723", "fk723m1"]
 
-project-files=["gnat/fk723m1_zgt6_startup.gpr"]
+project-files=["../gnat/light_fk723m1_zgt6.gpr"]
 
 [configuration]
 disabled = true
@@ -22,9 +22,3 @@ gnat_arm_elf = "*"
 a0b_base = "*"
 a0b_armv7m = "*"
 a0b_stm32h723 = "*"
-
-[[pins]]
-a0b_stm32h723 = { path='../a0b-stm32h723' }
-
-[[pins]]
-a0b_armv7m = { path='../a0b-armv7m' }
