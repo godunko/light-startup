@@ -1,13 +1,13 @@
-name = "light_stm32f4disco"
-description = "STM32F4DISCOVERY Board Support Package for `light` GNAT Runtime"
-version = "0.1.0"
+name = "light_stm32f4_disco"
+description = "STM32F4 DISCOVERY Board Support Package for `light` GNAT Runtime"
+version = "0.1.0-dev"
 
 authors = ["Yuri Veretelnikov"]
 maintainers = ["Yuri Veretelnnikov <yuri.veretelnikov@gmail.com>"]
 maintainers-logins = ["meowthsli"]
 licenses = "Apache-2.0 WITH LLVM-exception"
 
-project-files=["gnat/stm32f4disco_startup.gpr"]
+project-files=["../gnat/light_stm32f4_disco.gpr"]
 
 tags = ["embedded", "bsp", "light", "stm32", "stm32f4", "disco", "discovery", "stm32f4disco"]
 

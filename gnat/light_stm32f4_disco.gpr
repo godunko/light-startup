@@ -7,15 +7,15 @@
 with "a0b_armv7m";
 with "a0b_stm32f407";
 
-library project STM32F4DISCO_Startup is
+library project Light_STM32F4_Disco is
 
    for Target use "arm-eabi";
    for Runtime ("Ada") use "light-cortex-m4f";
 
-   for Library_Name use "stm32f4disco";
-   for Library_Dir use "../.libs";
+   for Library_Name use "lightstm32f4disco";
+   for Library_Dir use "../.libs/stm32f4disco";
 
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/stm32f4disco";
    for Source_Dirs use
      ("../source/board/stm32f4disco",
       "../source/mcu/stm32f407",
@@ -38,4 +38,4 @@ library project STM32F4DISCO_Startup is
          "-fdata-sections");
    end Compiler;
 
-end STM32F4DISCO_Startup;
+end Light_STM32F4_Disco;
