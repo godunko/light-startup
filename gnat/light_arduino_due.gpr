@@ -7,15 +7,15 @@
 with "a0b_armv7m";
 with "a0b_atsam3x8e";
 
-library project Arduino_Due_Startup is
+library project Light_Arduino_Due is
 
    for Target use "arm-eabi";
    for Runtime ("Ada") use "light-cortex-m3";
 
-   for Library_Name use "arduinodue";
-   for Library_Dir use "../.libs";
+   for Library_Name use "lightarduinodue";
+   for Library_Dir use "../.libs/arduino_due";
 
-   for Object_Dir use "../.objs";
+   for Object_Dir use "../.objs/arduino_due";
    for Source_Dirs use
      ("../source/board/arduino_due",
       "../source/mcu/atsam3x8e",
@@ -37,4 +37,4 @@ library project Arduino_Due_Startup is
          "-fdata-sections");
    end Compiler;
 
-end Arduino_Due_Startup;
+end Light_Arduino_Due;

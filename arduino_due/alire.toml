@@ -1,13 +1,13 @@
 name = "light_arduino_due"
 description = "Arduino Due Board Support Package for `light` GNAT Runtime"
-version = "0.2.0"
+version = "0.2.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
 maintainers-logins = ["godunko"]
 licenses = "Apache-2.0 WITH LLVM-exception"
 
-project-files=["gnat/arduino_due_startup.gpr"]
+project-files=["../gnat/light_arduino_due.gpr"]
 
 tags = ["a0b", "embedded", "bsp", "light", "sam3x8e", "arduino", "due"]
 
