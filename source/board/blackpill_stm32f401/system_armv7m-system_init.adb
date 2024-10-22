@@ -10,7 +10,7 @@ with A0B.STM32F401.SVD.Flash; use A0B.STM32F401.SVD.Flash;
 with A0B.STM32F401.SVD.PWR;   use A0B.STM32F401.SVD.PWR;
 with A0B.STM32F401.SVD.RCC;   use A0B.STM32F401.SVD.RCC;
 
-with A0B.ARMv7M.Startup_Utilities;
+with A0B.ARMv7M.Startup_Utilities.Enable_FPU;
 with A0B.Types;
 
 separate (System_ARMv7M)

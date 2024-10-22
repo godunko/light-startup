@@ -8,14 +8,15 @@
 
 with System.Storage_Elements;
 
-with A0B.ARMv7M.CMSIS;                  use A0B.ARMv7M.CMSIS;
-with A0B.ARMv7M.Memory_Protection_Unit; use A0B.ARMv7M.Memory_Protection_Unit;
-with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
+with A0B.ARMv7M.Cache_Utilities;
+with A0B.ARMv7M.Instructions;
+with A0B.ARMv7M.SCS.MPU;
+with A0B.ARMv7M.SCS.SCB;
+with A0B.ARMv7M.Startup_Utilities.Enable_FPU;
 with A0B.STM32H723.SVD.Flash;           use A0B.STM32H723.SVD.Flash;
 with A0B.STM32H723.SVD.PWR;             use A0B.STM32H723.SVD.PWR;
 with A0B.STM32H723.SVD.RCC;             use A0B.STM32H723.SVD.RCC;
 
-with System_ARMv7M.CM7;                 use System_ARMv7M.CM7;
 with System_ARMv7M.Startup_Utilities;   use System_ARMv7M.Startup_Utilities;
 
 separate (System_ARMv7M)
@@ -212,16 +213,16 @@ procedure System_Init is
    end Configure_Voltage_Scaling;
 
 begin
-   Enable_FPU;
+   A0B.ARMv7M.Startup_Utilities.Enable_FPU;
 
    --  Use MPU to protect ExtRAM (@0x6000_0000/0x8000_0000) and ExtDev
    --  (@0xA000_0000/0xC000_0000) regions from any access. It is recommended
    --  to prevent speculative read access of the Cortex-M7 CPU to these
    --  regions.
 
-   MPU.MPU_RBAR.ADDR :=
+   A0B.ARMv7M.SCS.MPU.MPU_RBAR.ADDR :=
      System.Storage_Elements.To_Address (16#0000_0000#);
-   MPU.MPU_RASR :=
+   A0B.ARMv7M.SCS.MPU.MPU_RASR :=
      (ENABLE => True,
       SIZE   => 16#1F#,
       SRD    => 2#1000_0111#,
@@ -236,7 +237,8 @@ begin
    --  Complete configuration and enable MPU
 
    declare
-      Aux : MPU_CTRL_Register := MPU.MPU_CTRL;
+      Aux : A0B.ARMv7M.SCS.MPU.MPU_CTRL_Register :=
+        A0B.ARMv7M.SCS.MPU.MPU_CTRL;
 
    begin
       Aux.PRIVDEFENA := True;
@@ -246,17 +248,17 @@ begin
       Aux.ENABLE     := True;
       --  Enable MPU.
 
-      MPU.MPU_CTRL := Aux;
+      A0B.ARMv7M.SCS.MPU.MPU_CTRL := Aux;
    end;
 
-   SCB.SHCSR.MEMFAULTENA := True;
+   A0B.ARMv7M.SCS.SCB.SHCSR.MEMFAULTENA := True;
    --  Enable memory fault exception
 
-   Data_Synchronization_Barrier;
-   Instruction_Synchronization_Barrier;
+   A0B.ARMv7M.Instructions.Data_Synchronization_Barrier;
+   A0B.ARMv7M.Instructions.Instruction_Synchronization_Barrier;
 
-   Enable_ICache;
-   Enable_DCache;
+   A0B.ARMv7M.Cache_Utilities.Enable_ICache;
+   A0B.ARMv7M.Cache_Utilities.Enable_DCache;
 
    Configure_Power_Supply_LDO;
    Configure_Voltage_Scaling (VOS0);
