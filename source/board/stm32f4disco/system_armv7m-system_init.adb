@@ -4,9 +4,11 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
---  stm32f407
-with A0B.ARMv7M.CMSIS;                  use A0B.ARMv7M.CMSIS;
-with A0B.ARMv7M.System_Control_Block;   use A0B.ARMv7M.System_Control_Block;
+--  STM32F407
+
+with A0B.ARMv7M.Instructions;           use A0B.ARMv7M.Instructions;
+with A0B.ARMv7M.SCS.SCB;                use A0B.ARMv7M.SCS.SCB;
+with A0B.ARMv7M.Startup_Utilities.Enable_FPU;
 with A0B.STM32F407.SVD.Flash;           use A0B.STM32F407.SVD.Flash;
 with A0B.STM32F407.SVD.PWR;             use A0B.STM32F407.SVD.PWR;
 with A0B.STM32F407.SVD.RCC;             use A0B.STM32F407.SVD.RCC;
@@ -109,7 +111,7 @@ begin
    Configure_External_Crystal_Oscillator;
    Configure_Periph;
    Configure_PLL_168MHZ;
-   Enable_FPU;
+   A0B.ARMv7M.Startup_Utilities.Enable_FPU;
 
    -- Switch system to PLL clock
    RCC_Periph.CFGR.SW.Val := 2#10#;
