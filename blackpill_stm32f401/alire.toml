@@ -20,7 +20,3 @@ a0b_armv7m.fpu_extension = "VFPv4"
 gnat_arm_elf = "*"
 a0b_armv7m = "*"
 a0b_stm32f401 = "*"
-
-[[pins]]
-a0b_stm32f401 = { path='../../a0b-stm32f401' }
-a0b_armv7m = { path='../../a0b-armv7m' }
