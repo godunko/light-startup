@@ -10,9 +10,6 @@ pragma Restrictions (No_Elaboration_Code);
 
 package System_ARMv7M.Startup_Utilities is
 
-   procedure Enable_FPU;
-   --  Enables floating point coprocessor.
-
    procedure Copy_Data_Section;
    --  Copy '.data' from the flash to the RAM region.
    --

@@ -5,12 +5,10 @@
 --
 
 pragma Restrictions (No_Elaboration_Code);
-
 pragma Ada_2022;
 
 with System.Storage_Elements;
 
-with A0B.ARMv7M.System_Control_Block; use A0B.ARMv7M.System_Control_Block;
 with A0B.Types;
 
 package body System_ARMv7M.Startup_Utilities is
@@ -110,20 +108,6 @@ package body System_ARMv7M.Startup_Utilities is
    begin
       Copy (sitcmtext'Address, eitcmtext'Address, siitcmtext'Address);
    end Copy_ITCM_Text_Section;
-
-   ----------------
-   -- Enable_FPU --
-   ----------------
-
-   procedure Enable_FPU is
-      Aux : SCB_CPACR_Register := SCB.CPACR;
-
-   begin
-      Aux.CP10 := 2#11#;
-      Aux.CP11 := 2#11#;
-
-      SCB.CPACR := Aux;
-   end Enable_FPU;
 
    ----------
    -- Fill --
