@@ -1,6 +1,6 @@
 name = "light_blackpill_stm32f401"
 description = "BlackPill STM32F401 BSP for `light` GNAT Runtime"
-version = "0.2.0-dev"
+version = "0.2.0"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
