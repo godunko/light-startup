@@ -4,13 +4,7 @@
  *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
  */
 
-/* STM32F401CD */
-
-MEMORY
-{
-    flash (rx) : ORIGIN = 0x08000000, LENGTH = 512K /* Flash, 512K */
-    ram (rwx)  : ORIGIN = 0x20000000, LENGTH = 96K /* SRAM, 96K */
-}
+/* STM32F401__ */
 
 /* Aliases to map default sections to the memory regions */
 

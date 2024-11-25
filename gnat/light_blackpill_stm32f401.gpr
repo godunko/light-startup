@@ -4,8 +4,7 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
-with "a0b_armv7m";
-with "a0b_stm32f401";
+with "../blackpill_stm32f401/config/light_blackpill_stm32f401_config";
 
 library project Light_Blackpill_STM32F401 is
 
@@ -22,12 +21,25 @@ library project Light_Blackpill_STM32F401 is
       "../source/cpu/cm4",
       "../source/cpu/armv7");
 
+   Linker_Script_File_Name := "";
+
+   case Light_Blackpill_STM32F401_Config.STM32F401 is
+      when "CB" =>
+         Linker_Script_File_Name := "stm32f401_b-flash.ld";
+      when "CC" =>
+         Linker_Script_File_Name := "stm32f401_c-flash.ld";
+      when "CD" =>
+         Linker_Script_File_Name := "stm32f401_d-flash.ld";
+      when "CE" =>
+         Linker_Script_File_Name := "stm32f401_e-flash.ld";
+   end case;
+
    Linker_Switches :=
      (
         "-Wl,--undefined=__light_exceptions_vector",
         "-Wl,--undefined=__light_interrupts_vector",
         "-L", Project'Project_Dir & "../source/ld",
-        "-T", "stm32f401cd-flash.ld"
+        "-T", Linker_Script_File_Name
      );
 
    package Compiler is
