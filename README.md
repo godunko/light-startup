@@ -7,6 +7,7 @@ no Asm or C code).
 
 Supported boards:
  - Arduino Due (SAM3X8E, Cortex-M3)
+ - Blackpill STM32F401 (STM32F401Cx, Cortex-M4)
  - FK723M1-ZGT6 (STM32H723ZGT6, Cortex-M7)
  - STM32F4-DISCOVERY (STM32F407VGxx, Cortex-M4)
 
