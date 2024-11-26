@@ -19,4 +19,3 @@ a0b_armv7m.fpu_extension = "none"
 
 [[depends-on]]
 a0b_atsam3x8e = "*"
-gnat_arm_elf = "*"
