@@ -69,7 +69,7 @@ begin
    RCC_Periph.CR.HSEON := True;
 
    while not RCC_Periph.CR.HSERDY loop
-   	null;
+      null;
    end loop;
 
    --  Configure PLL
