@@ -1,6 +1,10 @@
 # Blackpill STM32F401 Board Support
 
-MCU is configured to run processor at 84MHz using external crystal oscillator. Floating point coprocessor is enabled.
+Initial MCU configuration:
+ * CPU run at 84MHz using 25MHz external crystal oscillator
+ * floating point coprocessor is enabled
+ * FLASH instruction and data caches are enabled
+ * FLASH prefetch is disabled (due to internal noise impacting the ADC accuracy, see [ES0299] 2.2.8)
 
 Blackpill STM32F401 board supports few variants of MCU with different RAM/Flash sizes.
 To configure particular MCU installed on board, set `light_blackpill_stm32f401.stm32f401` configuration variable in `alire.toml` of your project. 
