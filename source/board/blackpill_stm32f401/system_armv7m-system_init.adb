@@ -50,7 +50,7 @@ begin
    RCC_Periph.APB1ENR.PWREN := True;
    Aux_APB1ENR := RCC_Periph.APB1ENR;
 
-   --  Set Flash Latancy first
+   --  Set Flash Latancy first (CPU clock frequency is going to be increased)
 
    FLASH_Periph.ACR.LATENCY := FLASH_LATENCY;
 
