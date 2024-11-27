@@ -120,4 +120,20 @@ begin
    while RCC_Periph.CFGR.SW.Val /= 2#10# loop
       null;
    end loop;
+
+   --  Enable Instruction and Data cache in the Embedded Flash memory interface
+   --
+   --  Note: as recommended by [ES0299] 2.2.8, prefetch is disabled to minimize
+   --  internal noise impacting ADC accuracy.
+
+   declare
+      Aux : ACR_Register := FLASH_Periph.ACR;
+
+   begin
+      Aux.ICEN   := True;
+      Aux.DCEN   := True;
+      Aux.PRFTEN := False;
+
+      FLASH_Periph.ACR := Aux;
+   end;
 end System_Init;
