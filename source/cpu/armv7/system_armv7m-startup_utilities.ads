@@ -6,9 +6,9 @@
 
 --  Various subprograms to be used by startup code.
 
-pragma Restrictions (No_Elaboration_Code);
-
-package System_ARMv7M.Startup_Utilities is
+package System_ARMv7M.Startup_Utilities
+  with No_Elaboration_Code_All
+is
 
    procedure Copy_Data_Section;
    --  Copy '.data' from the flash to the RAM region.

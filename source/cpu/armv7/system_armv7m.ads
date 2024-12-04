@@ -23,9 +23,9 @@
 --
 --  and _estack external symbol to set initial value of the stack pointer.
 
-pragma Restrictions (No_Elaboration_Code);
-
-package System_ARMv7M is
+package System_ARMv7M
+  with No_Elaboration_Code_All
+is
 
    type Exception_Event_Identifier is range -16 .. -1;
 

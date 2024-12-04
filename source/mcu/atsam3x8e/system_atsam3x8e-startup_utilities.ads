@@ -8,11 +8,9 @@
 --
 --  Various subprograms to be used by startup code.
 
-pragma Restrictions (No_Elaboration_Code);
-
-package System_ATSAM3X8E.Startup_Utilities is
-
-   pragma Elaborate_Body;
+package System_ATSAM3X8E.Startup_Utilities
+  with No_Elaboration_Code_All
+is
 
    procedure Setup_External_Oscillator;
    --  Start external oscillator, configure PLL, and configure to use PLL as

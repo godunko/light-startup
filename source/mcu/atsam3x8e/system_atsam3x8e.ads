@@ -51,11 +51,11 @@
 --   - CAN0_Handler
 --   - CAN1_Handler
 
-pragma Restrictions (No_Elaboration_Code);
-
 with System_ARMv7M;
 
-package System_ATSAM3X8E is
+package System_ATSAM3X8E
+  with No_Elaboration_Code_All
+is
 
    pragma Elaborate_Body;
 
