@@ -1,7 +1,7 @@
 name = "light_arduino_due"
 description = "Arduino Due Board Support Package for `light` GNAT Runtime"
 website = "https://github.com/godunko/light-startup"
-version = "0.3.0"
+version = "0.4.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
