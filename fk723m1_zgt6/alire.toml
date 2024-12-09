@@ -1,7 +1,7 @@
 name = "light_fk723m1_zgt6"
 description = "FK723M1-ZGT6 BSP for `light` GNAT Runtime"
 website = "https://github.com/godunko/light-startup"
-version = "0.2.0"
+version = "0.3.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
