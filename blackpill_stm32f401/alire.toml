@@ -1,7 +1,7 @@
 name = "light_blackpill_stm32f401"
 description = "BlackPill STM32F401 BSP for `light` GNAT Runtime"
 website = "https://github.com/godunko/light-startup"
-version = "0.3.0"
+version = "0.4.0-dev"
 
 authors = ["Vadim Godunko"]
 maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
