@@ -32,4 +32,6 @@ REGION_ALIAS ("DTCM_DATA", dtcm_ram);
 REGION_ALIAS ("DTCM_IDATA", rom);
 REGION_ALIAS ("DTCM_BSS", dtcm_ram);
 
+INCLUDE armv7-itcm.ld
+INCLUDE armv7-dtcm.ld
 INCLUDE armv7.ld

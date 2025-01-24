@@ -24,10 +24,9 @@ REGION_ALIAS("DEFAULT_BSS",     ram);
 REGION_ALIAS("DEFAULT_STACK",   ram);
 
 /* STM32F407 can't fetch instructions from the CCM */
-REGION_ALIAS ("ITCM_TEXT", flash);
-REGION_ALIAS ("ITCM_ITEXT", flash);
 REGION_ALIAS ("DTCM_DATA", ccm);
 REGION_ALIAS ("DTCM_IDATA", flash);
 REGION_ALIAS ("DTCM_BSS", ccm);
 
+INCLUDE armv7-dtcm.ld
 INCLUDE armv7.ld
