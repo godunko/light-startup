@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -19,7 +19,6 @@ library project Light_FK723M1_ZGT6 is
    for Source_Dirs use
      ("../source/board/fk723m1-zgt6",
       "../source/mcu/stm32h723",
-      "../source/cpu/cm7",
       "../source/cpu/armv7");
 
    Linker_Switches :=
@@ -37,5 +36,9 @@ library project Light_FK723M1_ZGT6 is
          "-ffunction-sections",
          "-fdata-sections");
    end Compiler;
+
+   package Naming is
+      for Implementation ("System_Armv7m.Memory_Init") use "system_armv7m-memory_init__both.adb";
+   end Naming;
 
 end Light_FK723M1_ZGT6;

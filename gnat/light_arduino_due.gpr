@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -36,5 +36,9 @@ library project Light_Arduino_Due is
          "-ffunction-sections",
          "-fdata-sections");
    end Compiler;
+
+   package Naming is
+      for Implementation ("System_Armv7m.Memory_Init") use "system_armv7m-memory_init__none.adb";
+   end Naming;
 
 end Light_Arduino_Due;

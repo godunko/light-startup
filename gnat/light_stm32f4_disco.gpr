@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Yuri Veretelnikov <yuri.veretelnikov@gmail.com>
+--  Copyright (C) 2024-2025, Yuri Veretelnikov <yuri.veretelnikov@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -19,7 +19,6 @@ library project Light_STM32F4_Disco is
    for Source_Dirs use
      ("../source/board/stm32f4disco",
       "../source/mcu/stm32f407",
-      "../source/cpu/cm4",
       "../source/cpu/armv7");
 
    Linker_Switches :=
@@ -37,5 +36,9 @@ library project Light_STM32F4_Disco is
          "-ffunction-sections",
          "-fdata-sections");
    end Compiler;
+
+   package Naming is
+      for Implementation ("System_Armv7m.Memory_Init") use "system_armv7m-memory_init__dtcm.adb";
+   end Naming;
 
 end Light_STM32F4_Disco;
