@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+ *  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
  *
  *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
  */
@@ -16,7 +16,7 @@ REGION_ALIAS("DEFAULT_IDATA",   flash);  /* info to initialize DEFAULT_DATA */
 REGION_ALIAS("DEFAULT_BSS",     ram);
 REGION_ALIAS("DEFAULT_STACK",   ram);
 
-REGION_ALIAS ("ITCM_TEXT", ram);
+REGION_ALIAS ("ITCM_TEXT", flash);
 REGION_ALIAS ("ITCM_ITEXT", flash);
 REGION_ALIAS ("DTCM_DATA", ram);
 REGION_ALIAS ("DTCM_IDATA", flash);

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+ *  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
  *
  *  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
  */
@@ -31,45 +31,5 @@ REGION_ALIAS ("ITCM_ITEXT", rom);
 REGION_ALIAS ("DTCM_DATA", dtcm_ram);
 REGION_ALIAS ("DTCM_IDATA", rom);
 REGION_ALIAS ("DTCM_BSS", dtcm_ram);
-
-SECTIONS
-{
-    .itcm.text : ALIGN(4) /* Ensure that the start of the section is word aligned */
-    {
-        _sitcmtext = .;   /* Global symbol at ITCM text start */
-
-        *(.itcm.text .itcm.text.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-        _eitcmtext = .;   /* Global symbol at ITCM text end */
-    } > ITCM_TEXT AT > ITCM_ITEXT
-    _siitcmtext = LOADADDR(.itcm.text);
-
-    .dtcm.data : ALIGN(4) /* Ensure that the start of the section is word aligned */
-    {
-        _sdtcmdata = .;   /* Global symbol at DTCM data start */
-
-        *(.dtcm.data .dtcm.data.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-        _edtcmdata = .;   /* Global symbol at DTCM data end */
-    } > DTCM_DATA AT > DTCM_IDATA
-    _sidtcmdata = LOADADDR(.dtcm.data);
-}
-INSERT AFTER .data;
-
-SECTIONS
-{
-    .dctm.bss (NOLOAD) : ALIGN(4)  /* Ensure that the start of the section is word aligned */
-    {
-        _sdtcmbss = .;        /* Global symbol at DTCM bss start */
-
-        *(.dtcm.bss .dtcm.bss.*)
-
-        . = ALIGN(4);     /* Ensure that the end of the section is word aligned */
-        _edtcmbss = .;        /* Global symbol at DTCM bss end */
-    } > DTCM_BSS
-}
-INSERT AFTER .bss;
 
 INCLUDE armv7.ld
