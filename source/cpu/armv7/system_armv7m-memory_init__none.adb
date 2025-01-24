@@ -4,6 +4,8 @@
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
 
+--  This version is for MCU without ITCM/DTCM support
+
 with System_ARMv7M.Startup_Utilities; use System_ARMv7M.Startup_Utilities;
 
 separate (System_ARMv7M)
