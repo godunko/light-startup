@@ -41,12 +41,14 @@ library project Light_Blackpill_STM32F401 is
         "-T", Linker_Script_File_Name
      );
 
+   Compiler_Switches :=
+     ("-g",
+      "-O2",
+      "-ffunction-sections",
+      "-fdata-sections");
+
    package Compiler is
-      for Switches ("Ada") use
-        ("-g",
-         "-O2",
-         "-ffunction-sections",
-         "-fdata-sections");
+      for Switches ("Ada") use Compiler_Switches;
    end Compiler;
 
    package Naming is
