@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -25,7 +25,7 @@ procedure System_Init is
    PLL_Q : constant := 7;           --  /7
    HPRE  : constant := 0;           --  /1 AHB
    PPRE  : constant := 2#000_100#;  --  /1 APB2, /2 APB2
-   --  Blackbill board has 25 MHz HSE resonator. Selected values allow
+   --  Blackpill board has 25 MHz HSE resonator. Selected values allow
    --  processor to run @84 MHz, as well as to use USB controller, which
    --  requires 48 MHz frequency.
    --
