@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2024, Vadim Godunko <vgodunko@gmail.com>
+--  Copyright (C) 2024-2025, Vadim Godunko <vgodunko@gmail.com>
 --
 --  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 --
@@ -67,7 +67,9 @@
 
 pragma Restrictions (No_Elaboration_Code);
 
-package System_STM32F401 is
+package System_STM32F401
+  with No_Elaboration_Code_All
+is
 
    pragma Elaborate_Body;
 
