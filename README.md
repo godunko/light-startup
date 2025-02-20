@@ -6,11 +6,15 @@ code and linker scripts for some boards. All code are written in Ada (there is
 no Asm or C code).
 
 Supported boards:
- - Arduino Due (SAM3X8E, Cortex-M3)
- - Blackpill STM32F401 (STM32F401Cx, Cortex-M4)
- - FK723M1-ZGT6 (STM32H723ZGT6, Cortex-M7)
- - STM32F4-DISCOVERY (STM32F407VGxx, Cortex-M4)
+ - Arduino Due (SAM3X8E, Cortex-M3) [![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/light_arduino_due.json)](https://alire.ada.dev/crates/light_arduino_due.html)
+ - FK723M1-ZGT6 (STM32H723ZGT6, Cortex-M7) [![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/light_fk723m1_zgt6.json)](https://alire.ada.dev/crates/light_fk723m1_zgt6.html)
+ - STM32F4DISCOVERY
+   - STM32F401 (STM32F401VC, Cortex-M4) [experimental]
+   - STM32F407 (STM32F407VG, Cortex-M4)
+ - WeAct Blackpill
+   - STM32F401 (STM32F401Cx, Cortex-M4), compatible with STM32F411 [![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/light_blackpill_stm32f401.json)](https://alire.ada.dev/crates/light_blackpill_stm32f401.html)
 
+   
 ## How to use
 
 Here is minimal project file that is necessary to use provided startup files:
