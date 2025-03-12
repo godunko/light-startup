@@ -1,0 +1,47 @@
+--
+--  Copyright (C) 2025, Vadim Godunko <vgodunko@gmail.com>
+--
+--  SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+--
+
+with "../weact_stm32g474/config/light_weact_stm32g474_config";
+
+library project Light_WeAct_STM32G474 is
+
+   for Target use "arm-eabi";
+   for Runtime ("Ada") use "light-cortex-m4f";
+
+   for Library_Name use "light_weact_stm32g474";
+   for Library_Dir use "../.libs/weact_stm32g474";
+
+   for Object_Dir use "../.objs/weact_stm32g474";
+   for Source_Dirs use
+     ("../source/board/weact_stm32g4xx_core",
+      "../source/mcu/stm32g474",
+      "../source/cpu/armv7");
+
+   Linker_Script_File_Name := "stm32g474_e-flash.ld";
+
+   Linker_Switches :=
+     (
+        "-Wl,--undefined=__light_exceptions_vector",
+        "-Wl,--undefined=__light_interrupts_vector",
+        "-L", Project'Project_Dir & "../source/ld",
+        "-T", Linker_Script_File_Name
+     );
+
+   Compiler_Switches :=
+     ("-g",
+      "-O2",
+      "-ffunction-sections",
+      "-fdata-sections");
+
+   package Compiler is
+      for Switches ("Ada") use Compiler_Switches;
+   end Compiler;
+
+   package Naming is
+      for Implementation ("System_Armv7m.Memory_Init") use "system_armv7m-memory_init__both.adb";
+   end Naming;
+
+end Light_WeAct_STM32G474;
