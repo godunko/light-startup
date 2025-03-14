@@ -8,13 +8,13 @@ pragma Restrictions (No_Elaboration_Code);
 
 with System;
 
-with A0B.STM32G4.G474;
+with A0B.STM32G474.Interrupts;
 
 with System_ARMv7M;
 
 package body System_STM32G474 is
 
-   use A0B.STM32G4.G474;
+   use A0B.STM32G474.Interrupts;
 
    procedure Dummy_Interrupt_Handler
      with Export, Convention => C, External_Name => "Dummy_Interrupt_Handler";
@@ -524,8 +524,7 @@ package body System_STM32G474 is
    pragma Weak_External (FMAC_Handler);
    pragma Linker_Alias (FMAC_Handler, "Dummy_Interrupt_Handler");
 
-   Interrupt_Vectors :
-     constant array (A0B.STM32G4.G474.Interrupt_Number) of System.Address :=
+   Interrupt_Vectors : constant array (Interrupt_Number) of System.Address :=
      (WWDG                              => WWDG_Handler'Address,
       --  Window Watchdog interrupt
       PVD_PVM                           => PVD_PVM_Handler'Address,
@@ -608,7 +607,7 @@ package body System_STM32G474 is
       --  USART2 global interrupt and EXTI line 26
       USART3                            => USART3_Handler'Address,
       --  USART3 global interrupt and EXTI line 28
-      EXTI15_10                         => EXTI15_10'Address,
+      EXTI15_10                         => EXTI15_10_Handler'Address,
       --  EXTI line[15:10] interrupts
       RTC_ALARM                         => RTC_ALARM_Handler'Address,
       --  RTC alarms interrupts
