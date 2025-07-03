@@ -14,6 +14,7 @@ Supported boards:
  - WeAct Blackpill
    - STM32F401 (STM32F401Cx, Cortex-M4), compatible with STM32F411 [![Alire](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/light_blackpill_stm32f401.json)](https://alire.ada.dev/crates/light_blackpill_stm32f401.html)
 
+Note: alternative solution, which supports tasking, is to generate runtime/tasking support/startup code by [A0B Tools](https://github.com/godunko/a0b-tools/).
    
 ## How to use
 
